@@ -1,0 +1,11 @@
+*.mp4
+*.mov
+*.zip
+*.psd
+*.ai
+*.fig
+node_modules/
+.DS_Store
+.env
+dist/
+build/

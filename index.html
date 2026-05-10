@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>GabieGabie — Design for Huma</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Satoshi:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.cdnfonts.com/css/melodrama" rel="stylesheet" />
+
+    <!-- ✅ ADD THIS -->
+    <link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+
+    <div id="cursor"></div>
+
+    <!-- NAME LOGO -->
+    <div id="name-logo" class="display">Gabie <em>Gabie</em></div>
+
+    <!-- BOTTOM NAV -->
+    <nav id="bottom-nav">
+        <button class="nav-tab active" data-idx="0" onclick="goToFrame(0)">
+            <div class="dot"></div><span class="nav-label">About</span>
+        </button>
+        <button class="nav-tab" data-idx="1" onclick="goToFrame(1)">
+            <div class="dot"></div><span class="nav-label">Design</span>
+        </button>
+        <button class="nav-tab" data-idx="2" onclick="goToFrame(2)">
+            <div class="dot"></div><span class="nav-label">Gallery</span>
+        </button>
+    </nav>
+
+    <!-- SWIPE HINT -->
+    <div id="swipe-hint">Swipe
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="13 6 19 12 13 18" />
+        </svg>
+    </div>
+
+    <!-- FILMSTRIP -->
+    <div id="filmstrip-viewport">
+        <div id="filmstrip">
+
+            <!-- ══ FRAME 1: HOME ══ -->
+            <div class="frame" id="frame-intro">
+
+                <!-- SECTION A: Circle animation -->
+                <div class="intro-hero-section">
+                    <div class="intro-hero-inner">
+                        <div class="intro-hero-text">
+                            <p class="intro-eyebrow">Interaction Designer</p>
+                            <h1 class="display intro-name">Hi, I am <em>Gabie</em></h1>
+                            <p class="intro-bio">
+                                who loves to make
+                                <span class="hero-highlight">uncertainty feel adventurous</span> —
+                                and <span class="hero-highlight">growth feel possible</span>.
+                            </p>
+                        </div>
+                        <div class="intro-visual">
+                            <div class="circle-ring"></div>
+                            <div class="circle-ring"></div>
+                            <div class="circle-ring"></div>
+                            <div class="circle-ring"></div>
+                            <div class="circle-center"></div>
+                        </div>
+                    </div>
+                    <p class="intro-philosophy">A Human Being</p>
+                    <div class="scroll-nudge">
+                        <p>Scroll</p><span></span>
+                    </div>
+                </div>
+
+                <!-- SECTION B: Photo left, intro text right -->
+                <div class="intro-about-section">
+                    <div class="intro-about-photo-col">
+                        <div class="intro-photo-wrap">
+                            <img src="me-cover.png" style="width:100%;height:100%;object-fit:cover;" />
+                        </div>
+                        <!-- Simple one-line caption, no fill/badge -->
+                        <p class="photo-caption">Gabriella Hoang · Sydney</p>
+                    </div>
+                    <div class="intro-about-text-col">
+                        <p class="about-section-label">From Saigon to Sydney</p>
+                        <h2 class="display intro-about-heading"><em>Gabriella</em> Hoang
+                        </h2>
+                        <p class="intro-about-body">I am an interaction design student at USYD, working
+                            across behavioural systems, service
+                            design, and speculative futures.<br><br>
+                            Grounded in human insight, I design strategic experiences to enable meaningful behaviour,
+                            connection, and
+                            long-term decision-making.<br><br>My work explores how designs can help people navigate
+                            moments of
+                            of emotional complexity and uncertainty through a process of
+                            research, systems thinking, prototyping, and reflection.<br><br>I am drawn to
+                            interdisciplinary projects where I can learn from others and co-create more joyful,
+                            supportive, and
+                            connected ways of living.</p>
+                    </div>
+                </div>
+
+                <div class="my-philosophy">
+                    <div class="design-philosophy">
+                        <p class="philosophy-eyebrow">My design is grounded in</p>
+                        <div class="philosophy-grid">
+                            <div class="philosophy-cell">
+                                <span class="philosophy-num">01</span>
+                                <span class="philosophy-title">People-first</span>
+                                <span class="philosophy-desc">Experiences that feel simple, joyful, and deeply
+                                    human.</span>
+                            </div>
+                            <div class="philosophy-cell">
+                                <span class="philosophy-num">02</span>
+                                <span class="philosophy-title">Purposeful</span>
+                                <span class="philosophy-desc">Solving real problems — optimising function where it
+                                    matters most.</span>
+                            </div>
+                            <div class="philosophy-cell">
+                                <span class="philosophy-num">03</span>
+                                <span class="philosophy-title">Motivative</span>
+                                <span class="philosophy-desc">Quietly supporting behaviour to help people explore their
+                                    potential.</span>
+                            </div>
+                            <div class="philosophy-cell">
+                                <span class="philosophy-num">04</span>
+                                <span class="philosophy-title">Creative and Updated</span>
+                                <span class="philosophy-desc">Always fresh, always exploring — design that stays
+                                    current with the
+                                    world.</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="craft-section">
+                        <div class="craft-divider"></div>
+                        <p class="craft-eyebrow">Tools &amp; craft</p>
+
+                        <div class="craft-group">
+                            <p class="craft-group-label">Design</p>
+                            <div class="craft-chips">
+                                <span class="craft-chip">Figma</span>
+                                <span class="craft-chip">Blender</span>
+                                <span class="craft-chip">Fusion 360</span>
+                            </div>
+                        </div>
+
+                        <div class="craft-group">
+                            <p class="craft-group-label">Code</p>
+                            <div class="craft-chips">
+                                <span class="craft-chip">JavaScript</span>
+                                <span class="craft-chip">HTML</span>
+                                <span class="craft-chip">CSS</span>
+                                <span class="craft-chip">Python</span>
+                                <span class="craft-chip">Java</span>
+                                <span class="craft-chip">C</span>
+                            </div>
+                        </div>
+
+                        <div class="craft-group">
+                            <p class="craft-group-label">Human</p>
+                            <div class="craft-chips">
+                                <span class="craft-chip craft-chip--warm">Positive self-talk</span>
+                                <span class="craft-chip craft-chip--warm">Nature Connection</span>
+                                <span class="craft-chip craft-chip--warm">Explore life</span>
+                                <span class="craft-chip craft-chip--warm">Relationships</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FOOTER -->
+                <div class="frame-footer">
+                    <!-- <div class="footer-eyebrow">Get in touch</div> -->
+                    <h2 class="display footer-heading">Let's make<br>something <em>meaningful.</em></h2>
+                    <!-- <p class="footer-sub">Open to collaborations, freelance work, and conversations about designing for
+                        human wellbeing.</p> -->
+                    <div class="footer-email-row">
+                        <span class="footer-email">gabriella.hoangg@gmail.com</span>
+                        <button class="copy-btn" onclick="copyEmail(this)">Copy</button>
+                    </div>
+                    <div class="footer-links">
+                        <a class="footer-link" href="#" onclick="return false"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>LinkedIn</a>
+                        <a class="footer-link" href="#" onclick="return false"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" />
+                                <circle cx="12" cy="12" r="5" />
+                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                            </svg>Instagram</a>
+                        <a class="footer-link" href="#" onclick="return false"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <path
+                                    d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32" />
+                            </svg>Dribbble</a>
+                    </div>
+                    <div class="footer-bottom">
+                        <span class="footer-bottom-name">Gabriella Hoang · Interaction Designer</span>
+                        <span class="footer-bottom-copy">© 2024 · All rights reserved</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ══ FRAME 2: WORK ══ -->
+            <div class="frame" id="frame-work">
+                <div class="work-list">
+                    <div class="top-section">
+                        <p class="page-tagline">Selected Projects · 2021–2026</p>
+                    </div>
+                    <div class="proj-grid">
+                        <div class="proj-grid-card" onclick="openProject('peace')">
+                            <div class="proj-grid-thumb">
+                                <video src="img_peace/cover.mp4" poster="img_peace/cover.png" autoplay loop muted
+                                    playsinline></video>
+                                <span class="proj-grid-year">2025</span>
+                            </div>
+                            <div class="proj-grid-info">
+                                <div class="proj-grid-num">01</div>
+                                <div class="proj-grid-title">Peace — Mental Health Support System</div>
+                                <div class="project-tags"><span class="tag">System Design</span> <span class="tag">UX/UI
+                                    </span></div>
+                            </div>
+                        </div>
+                        <div class="proj-grid-card" onclick="openProject('choco')">
+                            <div class="proj-grid-thumb">
+                                <video src="img_cho/cover.mp4" poster="img_cho/cover.png" autoplay loop muted
+                                    playsinline></video>
+                                <span class="proj-grid-year">2025</span>
+                            </div>
+                            <div class="proj-grid-info">
+                                <div class="proj-grid-num">02</div>
+                                <div class="proj-grid-title">CHOCO EMO — A Chocolate Collection for Your Emotions</div>
+                                <div class="project-tags"><span class="tag">Product Design</span><span
+                                        class="tag">Advertising Strategy</span></div>
+                            </div>
+                        </div>
+                        <div class="proj-grid-card" onclick="openProject('i-see-you')">
+                            <div class="proj-grid-thumb">
+                                <video src="img_isu/demo.mp4" poster="img_isu/cover.png" autoplay loop muted
+                                    playsinline></video>
+                                <span class="proj-grid-year">2025</span>
+                            </div>
+                            <div class="proj-grid-info">
+                                <div class="proj-grid-num">06</div>
+                                <div class="proj-grid-title">Meditation Creative Coding</div>
+                                <div class="project-tags"><span class="tag">Interactive Coding</span><span
+                                        class="tag">UX/UI</span></div>
+                            </div>
+                        </div>
+                        <div class="proj-grid-card" onclick="openProject('sparkling')">
+                            <div class="proj-grid-thumb">
+                                <video src="img_sp/cover.mp4" poster="img_sp/cover.png" autoplay loop muted
+                                    playsinline></video>
+                                <span class="proj-grid-year">2025</span>
+                            </div>
+                            <div class="proj-grid-info">
+                                <div class="proj-grid-num">03</div>
+                                <div class="proj-grid-title">SantéLuximun Sparkling Water</div>
+                                <div class="project-tags"><span class="tag">Branding</span><span class="tag">Graphic
+                                        Design</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="frame-footer">
+                    <!-- <div class="footer-eyebrow">Get in touch</div> -->
+                    <h2 class="display footer-heading">Let's make<br>something <em>meaningful.</em></h2>
+                    <!-- <p class="footer-sub">Open to collaborations, freelance work, and conversations about designing for
+                        human wellbeing.</p> -->
+                    <div class="footer-email-row"><span class="footer-email">gabriella.hoangg@gmail.com</span><button
+                            class="copy-btn" onclick="copyEmail(this)">Copy</button></div>
+                    <div class="footer-links">
+                        <a class="footer-link" href="#" onclick="return false"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>LinkedIn</a>
+                        <a class="footer-link" href="#" onclick="return false"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" />
+                                <circle cx="12" cy="12" r="5" />
+                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                            </svg>Instagram</a>
+                        <a class="footer-link" href="#" onclick="return false"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <path
+                                    d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32" />
+                            </svg>Dribbble</a>
+                    </div>
+                    <div class="footer-bottom"><span class="footer-bottom-name">Gabriella Hoang · Interaction
+                            Designer</span><span class="footer-bottom-copy">© 2024 · All rights reserved</span></div>
+                </div>
+            </div>
+
+            <!-- ══ FRAME 3: ABOUT ══ -->
+            <div class="frame" id="frame-about">
+                <div class="about-inner">
+                    <div class="about-left">
+                        <h2 class="display about-heading">
+                            What it means to be <br><em> a human</em>?<br>
+                        </h2>
+
+                        <p class="about-story">
+                            We are expected to work, to study, and to plan for the future every day.<br><br>
+
+                            But what about living?<br><br>
+
+                            I design for people to live —<br>
+                            to really feel their lives.<br><br>
+
+                            Sometimes, we need to pause<br>
+                            and allow ourselves to enjoy what we have achieved so far.
+                        </p>
+                        </p>
+                    </div>
+                    <div class="about-right">
+                        <div class="portrait-wrap">
+                            <div class="portrait-img">
+                                <img src="human.png" style="width:100%;height:100%;object-fit:cover;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery">
+                    <h2 class="display about-heading">
+                        How much<em> do I love my life</em><br>and <em>design</em>?
+                    </h2>
+                </div>
+
+                <!-- PERSONAL GALLERY -->
+                <div class="personal-gallery">
+                    <p class="personal-gallery-label">Every moment I live, I am designing my life</p>
+                    <div class="pg-grid">
+                        <!-- Wide feature card (spans 2 cols) -->
+                        <div class="pg-card wide">
+                            <div class="pg-thumb" style="background:linear-gradient(135deg,#D4A5A0,#8C7B6B);">
+                                <!-- <img src="img/personal-featured.jpg" alt="Featured" /> -->
+                                <p class="pg-thumb-placeholder">Add featured photo here</p>
+                                <span class="pg-tag-badge">Featured</span>
+                            </div>
+                            <div class="pg-card-info">
+                                <h5>Featured Project or Moment</h5>
+                                <p>Short caption goes here</p>
+                            </div>
+                        </div>
+                        <!-- Card 2 -->
+                        <div class="pg-card">
+                            <div class="pg-thumb" style="background:linear-gradient(135deg,#7A9E7E,#2C2825);">
+                                <!-- <img src="img/personal2.jpg" alt="" /> -->
+                                <p class="pg-thumb-placeholder">Photo 2</p>
+                                <span class="pg-tag-badge">Illustration</span>
+                            </div>
+                            <div class="pg-card-info">
+                                <h5>Project Name</h5>
+                                <p>Caption</p>
+                            </div>
+                        </div>
+                        <!-- Card 3 -->
+                        <div class="pg-card">
+                            <div class="pg-thumb" style="background:linear-gradient(135deg,#99AEEF,#534AB7);">
+                                <!-- <img src="img/personal3.jpg" alt="" /> -->
+                                <p class="pg-thumb-placeholder">Photo 3</p>
+                                <span class="pg-tag-badge">Photography</span>
+                            </div>
+                            <div class="pg-card-info">
+                                <h5>Project Name</h5>
+                                <p>Caption</p>
+                            </div>
+                        </div>
+                        <!-- Card 4 -->
+                        <div class="pg-card">
+                            <div class="pg-thumb" style="background:linear-gradient(135deg,#EDE5D4,#C8B99A);">
+                                <!-- <img src="img/personal4.jpg" alt="" /> -->
+                                <p class="pg-thumb-placeholder">Photo 4</p>
+                                <span class="pg-tag-badge">Sketchbook</span>
+                            </div>
+                            <div class="pg-card-info">
+                                <h5>Project Name</h5>
+                                <p>Caption</p>
+                            </div>
+                        </div>
+                        <!-- Card 5 -->
+                        <div class="pg-card">
+                            <div class="pg-thumb" style="background:linear-gradient(135deg,#D97B4F,#2C2825);">
+                                <!-- <img src="img/personal5.jpg" alt="" /> -->
+                                <p class="pg-thumb-placeholder">Photo 5</p>
+                                <span class="pg-tag-badge">Life</span>
+                            </div>
+                            <div class="pg-card-info">
+                                <h5>Moment Name</h5>
+                                <p>Caption</p>
+                            </div>
+                        </div>
+                        <!-- Add more .pg-card blocks as needed -->
+                    </div>
+                </div>
+
+                <div class="frame-footer">
+                    <!-- <div class="footer-eyebrow">Get in touch</div> -->
+                    <h2 class="display footer-heading">Let's make<br>something <em>meaningful.</em></h2>
+                    <!-- <p class="footer-sub">Open to collaborations, freelance work, and conversations about designing for
+                        human wellbeing.</p> -->
+                    <div class="footer-email-row"><span class="footer-email">gabriella.hoangg@gmail.com</span><button
+                            class="copy-btn" onclick="copyEmail(this)">Copy</button></div>
+                    <div class="footer-links">
+                        <a class="footer-link" href="#" onclick="return false"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>LinkedIn</a>
+                        <a class="footer-link" href="#" onclick="return false"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" />
+                                <circle cx="12" cy="12" r="5" />
+                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                            </svg>Instagram</a>
+                        <a class="footer-link" href="#" onclick="return false"><svg viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10" />
+                                <path
+                                    d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32" />
+                            </svg>Dribbble</a>
+                    </div>
+                    <div class="footer-bottom"><span class="footer-bottom-name">Gabriella Hoang · Interaction
+                            Designer</span><span class="footer-bottom-copy">© 2024 · All rights reserved</span></div>
+                </div>
+            </div>
+
+        </div><!-- /filmstrip -->
+    </div><!-- /filmstrip-viewport -->
+
+    <!-- PROJECT OVERLAY -->
+    <div id="project-overlay">
+        <div class="proj-sidebar">
+            <button class="proj-back" onclick="closeProject()">← Back</button>
+            <p class="proj-name-sidebar" id="proj-sidebar-name">Project</p>
+            <p class="proj-type-sidebar" id="proj-sidebar-type">Type</p>
+            <ul class="proj-tab-list"></ul>
+            <div class="proj-sidebar-footer">
+                <p id="proj-year-sidebar">Year: 2024</p>
+            </div>
+        </div>
+        <div class="proj-content" id="proj-content"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
