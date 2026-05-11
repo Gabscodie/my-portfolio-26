@@ -80,27 +80,31 @@ h2,
 
 /* ── CURSOR ── */
 @media(hover:hover) {
+
+    html,
     body {
-        cursor: none
+        cursor: none;
     }
 
     #cursor {
         position: fixed;
-        width: 10px;
-        height: 10px;
+        left: 0;
+        top: 0;
+        width: 16px;
+        height: 16px;
+        border: 1px solid #2c2825;
         border-radius: 50%;
-        background: var(--mist);
         pointer-events: none;
-        z-index: 9999;
+        z-index: 999999;
         transform: translate(-50%, -50%);
-        mix-blend-mode: multiply;
-        transition: width .2s ease, height .2s ease, opacity .2s ease;
+        transition: width 0.18s ease, height 0.18s ease, background 0.18s ease;
+        mix-blend-mode: difference;
     }
 
     #cursor.big {
-        width: 32px;
-        height: 32px;
-        opacity: .38
+        width: 44px;
+        height: 44px;
+        background: rgba(44, 40, 37, 0.12);
     }
 }
 
