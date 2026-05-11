@@ -268,7 +268,7 @@ const projects = {
       evidence: [
         {
           type: 'image',
-          src: 'img_peace/cover.png',
+          src: 'img_peace/cover.webp',
           caption: 'Peace — project cover'
         }
       ]
@@ -386,28 +386,28 @@ const projects = {
           type: 'video',
           format: 'landscape',
           src: 'img_peace/dashboard.mp4',
-          poster: 'img_peace/dashboard-cover.png',
+          poster: 'img_peace/dashboard-cover.webp',
           caption: 'Professional Management System'
         },
         {
           type: 'video',
           format: 'landscape',
           src: 'img_peace/therapist.mp4',
-          poster: 'img_peace/therapists-cover.png',
+          poster: 'img_peace/therapists-cover.webp',
           caption: 'Therapist Profile & Matching Interface'
         },
         {
           type: 'video',
           format: 'landscape',
           src: 'img_peace/patient.mp4',
-          poster: 'img_peace/patient-cover.png',
+          poster: 'img_peace/patient-cover.webp',
           caption: 'Patient Profile & Booking Flow'
         },
         {
           type: 'video',
           format: 'square',
           src: 'img_peace/watch-interface.mp4',
-          poster: 'img_peace/watch-interface-cover.png',
+          poster: 'img_peace/watch-interface-cover.webp',
           caption: 'Smartwatch Emotional Check-in'
         },
         {
@@ -461,7 +461,7 @@ CHOCO EMO is a limited-edition chocolate box designed to transform emotions into
         { l: 'Output', v: 'Packaging System + Campaign Poster' }
       ],
       evidence: [
-        { type: 'image', src: 'img_cho/cover.png', caption: 'CHOCO EMO — project cover' }
+        { type: 'image', src: 'img_cho/cover.webp', caption: 'CHOCO EMO — project cover' }
       ]
     },
 
@@ -471,7 +471,7 @@ CHOCO EMO is a limited-edition chocolate box designed to transform emotions into
 <strong>How might we transform chocolate from a simple indulgence into a small emotional ritual?</strong>`,
       quote: `"Every emotion deserves a choco treat."`,
       evidence: [
-        { type: 'image', src: 'img_cho/moodboard.png', caption: 'Visual and emotional inspiration from Inside Out 2' }
+        { type: 'image', src: 'img_cho/moodboard.webp', caption: 'Visual and emotional inspiration from Inside Out 2' }
       ]
     },
 
@@ -517,17 +517,17 @@ CHOCO EMO is a limited-edition chocolate box designed to transform emotions into
       evidence: [
         {
           type: 'image',
-          src: 'img_cho/form_iter.png',
+          src: 'img_cho/form_iter.webp',
           caption: 'Form iteration: single-layer to multi-compartment treasure box'
         },
         {
           type: 'image',
-          src: 'img_cho/blender_iter.png',
+          src: 'img_cho/blender_iter.webp',
           caption: 'Material and lighting tests in Blender (texture, roughness, light balance)'
         },
         {
           type: 'image',
-          src: 'img_cho/laser_iter.png',
+          src: 'img_cho/laser_iter.webp',
           caption: 'Laser cutting iterations: kerf adjustment, hinge refinement, assembly testing'
         }
       ]
@@ -542,7 +542,7 @@ CHOCO EMO is a limited-edition chocolate box designed to transform emotions into
         { n: '03', d: 'Campaign poster and visual identity' }
       ],
       evidence: [
-        { type: 'image', src: 'img_cho/final.png', caption: 'Final CHOCO EMO campaign and packaging outcome' }
+        { type: 'image', src: 'img_cho/final.webp', caption: 'Final CHOCO EMO campaign and packaging outcome' }
       ]
     },
 
@@ -576,7 +576,7 @@ My role was graphic designer responsible for developing three campaign visual co
         { l: 'Constraint', v: 'Fixed logo + can assets' }
       ],
       evidence: [
-        { type: 'image', src: 'img_sp/cover.png', caption: 'SantéLuximun — project cover' },
+        { type: 'image', src: 'img_sp/cover.webp', caption: 'SantéLuximun — project cover' },
       ]
     },
 
@@ -613,17 +613,17 @@ The brief involved competing stakeholder expectations: the marketing team wanted
         }
       ],
       evidence: [
-        { type: 'image', src: 'img_sp/class1.png', caption: 'Classic direction' },
-        { type: 'image', src: 'img_sp/class2.png', caption: 'Classic direction' },
-        { type: 'image', src: 'img_sp/class3.png', caption: 'Classic direction' },
-        { type: 'image', src: 'img_sp/class.png', caption: 'Classic direction' },
-        { type: 'image', src: 'img_sp/bal.png', caption: 'Balanced direction' },
-        { type: 'image', src: 'img_sp/mo.png', caption: 'Modern direction' },
-        { type: 'image', src: 'img_sp/mo1.png', caption: 'Modern direction' },
-        { type: 'image', src: 'img_sp/mo2.png', caption: 'Modern direction' },
-        { type: 'image', src: 'img_sp/bal.png', caption: 'Balanced direction' },
-        { type: 'image', src: 'img_sp/bal1.png', caption: 'Balanced direction' },
-        { type: 'image', src: 'img_sp/bal2.png', caption: 'Balanced direction' },
+        { type: 'image', src: 'img_sp/class1.webp', caption: 'Classic direction' },
+        { type: 'image', src: 'img_sp/class2.webp', caption: 'Classic direction' },
+        { type: 'image', src: 'img_sp/class3.webp', caption: 'Classic direction' },
+        { type: 'image', src: 'img_sp/class.webp', caption: 'Classic direction' },
+        { type: 'image', src: 'img_sp/bal.webp', caption: 'Balanced direction' },
+        { type: 'image', src: 'img_sp/mo.webp', caption: 'Modern direction' },
+        { type: 'image', src: 'img_sp/mo1.webp', caption: 'Modern direction' },
+        { type: 'image', src: 'img_sp/mo2.webp', caption: 'Modern direction' },
+        { type: 'image', src: 'img_sp/bal.webp', caption: 'Balanced direction' },
+        { type: 'image', src: 'img_sp/bal1.webp', caption: 'Balanced direction' },
+        { type: 'image', src: 'img_sp/bal2.webp', caption: 'Balanced direction' },
         // { type: 'video', src: 'img_sp/process.mp4', caption: 'Design process walkthrough' },
       ]
     },
@@ -637,12 +637,12 @@ The brief involved competing stakeholder expectations: the marketing team wanted
         { n: '02', d: 'Balanced audience appeal' }
       ],
       evidence: [
-        { type: 'image', src: 'img_sp/sp_classic.png', caption: 'Classic' },
-        { type: 'image', src: 'img_sp/sp_balance.png', caption: 'Balanced' },
-        { type: 'image', src: 'img_sp/sp_modern.png', caption: 'Modern' },
-        { type: 'image', src: 'img_sp/sp_square.png', caption: 'Social Media - Modern Direction' },
+        { type: 'image', src: 'img_sp/sp_classic.webp', caption: 'Classic' },
+        { type: 'image', src: 'img_sp/sp_balance.webp', caption: 'Balanced' },
+        { type: 'image', src: 'img_sp/sp_modern.webp', caption: 'Modern' },
+        { type: 'image', src: 'img_sp/sp_square.webp', caption: 'Social Media - Modern Direction' },
 
-        // { type: 'image', src: 'img_sp/sp_square.png', caption: 'Square format adaptation' },
+        // { type: 'image', src: 'img_sp/sp_square.webp', caption: 'Square format adaptation' },
       ]
     },
 
@@ -683,7 +683,7 @@ The project explores a simple emotional premise: our thoughts and emotions may s
         { l: 'Focus', v: 'Self-awareness · Emotion · Generative Visualisation' }
       ],
       evidence: [
-        { type: 'video', src: 'img_isu/demo.mp4', poster: 'img_isu/cover.png', caption: 'Live demo — interactive visual meditation' },
+        { type: 'video', src: 'img_isu/demo.mp4', poster: 'img_isu/cover.webp', caption: 'Live demo — interactive visual meditation' },
       ]
     },
 
@@ -740,9 +740,9 @@ The concept reframes the screen as a small universe. The cursor becomes awarenes
       ],
       evidence: [
         { type: 'placeholder', label: 'Add early code experiments, particle tests, or p5.js screenshots here' },
-        // { type: 'image', src: 'img_isu/process-01.png', caption: 'Early galaxy spiral exploration' },
-        // { type: 'image', src: 'img_isu/process-02.png', caption: 'Chakra particle system development' },
-        // { type: 'image', src: 'img_isu/process-03.png', caption: 'Light effect iteration' },
+        // { type: 'image', src: 'img_isu/process-01.webp', caption: 'Early galaxy spiral exploration' },
+        // { type: 'image', src: 'img_isu/process-02.webp', caption: 'Chakra particle system development' },
+        // { type: 'image', src: 'img_isu/process-03.webp', caption: 'Light effect iteration' },
       ]
     },
 
@@ -835,7 +835,7 @@ Rather than producing annotated notes, I chose to translate theory into a person
       ],
       evidence: [
         { type: 'placeholder', label: 'Add cover image of the zine here' },
-        // { type: 'image', src: 'img/zine_cover.png', caption: 'Zine cover' },
+        // { type: 'image', src: 'img/zine_cover.webp', caption: 'Zine cover' },
       ]
     },
 
@@ -872,8 +872,8 @@ The challenge was to make 13 weeks of content feel cohesive, personal, and worth
       ],
       evidence: [
         { type: 'placeholder', label: 'Add spread development, layout iterations, or drafts here' },
-        // { type: 'image', src: 'img/zine_spread1.png', caption: 'Spread — week 1–3' },
-        // { type: 'image', src: 'img/zine_spread2.png', caption: 'Spread — mid-zine development' },
+        // { type: 'image', src: 'img/zine_spread1.webp', caption: 'Spread — week 1–3' },
+        // { type: 'image', src: 'img/zine_spread2.webp', caption: 'Spread — mid-zine development' },
       ]
     },
 
@@ -887,8 +887,8 @@ The challenge was to make 13 weeks of content feel cohesive, personal, and worth
       ],
       evidence: [
         { type: 'placeholder', label: 'Add final spread photography or scan of the finished zine here' },
-        // { type: 'image', src: 'img/zine_spread3.png', caption: 'Final spread — cover section' },
-        // { type: 'image', src: 'img/zine_spread4.png', caption: 'Final spread — closing section' },
+        // { type: 'image', src: 'img/zine_spread3.webp', caption: 'Final spread — cover section' },
+        // { type: 'image', src: 'img/zine_spread4.webp', caption: 'Final spread — closing section' },
         // { type: 'video', src: 'img/zine_flipthrough.mp4', caption: 'Zine flip-through' },
       ]
     },
