@@ -104,7 +104,7 @@ h2,
     #cursor.big {
         width: 44px;
         height: 44px;
-        background: rgba(44, 40, 37, 0.12);
+        background: var(--mist);
     }
 }
 
