@@ -385,28 +385,28 @@ const projects = {
         {
           type: 'video',
           format: 'landscape',
-          src: 'img_peace/dashboard.mp4',
+          src: 'img_peace/dashboard-web.mp4',
           poster: 'img_peace/dashboard-cover.webp',
           caption: 'Professional Management System'
         },
         {
           type: 'video',
           format: 'landscape',
-          src: 'img_peace/therapist.mp4',
+          src: 'img_peace/therapist-web.mp4',
           poster: 'img_peace/therapists-cover.webp',
           caption: 'Therapist Profile & Matching Interface'
         },
         {
           type: 'video',
           format: 'landscape',
-          src: 'img_peace/patient.mp4',
+          src: 'img_peace/patient-web.mp4',
           poster: 'img_peace/patient-cover.webp',
           caption: 'Patient Profile & Booking Flow'
         },
         {
           type: 'video',
           format: 'square',
-          src: 'img_peace/watch-interface.mp4',
+          src: 'img_peace/watch-interface-web.mp4',
           poster: 'img_peace/watch-interface-cover.webp',
           caption: 'Smartwatch Emotional Check-in'
         },
@@ -624,7 +624,7 @@ The brief involved competing stakeholder expectations: the marketing team wanted
         { type: 'image', src: 'img_sp/bal.webp', caption: 'Balanced direction' },
         { type: 'image', src: 'img_sp/bal1.webp', caption: 'Balanced direction' },
         { type: 'image', src: 'img_sp/bal2.webp', caption: 'Balanced direction' },
-        // { type: 'video', src: 'img_sp/process.mp4', caption: 'Design process walkthrough' },
+        // { type: 'video', src: 'img_sp/process-web.mp4', caption: 'Design process walkthrough' },
       ]
     },
 
@@ -683,7 +683,7 @@ The project explores a simple emotional premise: our thoughts and emotions may s
         { l: 'Focus', v: 'Self-awareness · Emotion · Generative Visualisation' }
       ],
       evidence: [
-        { type: 'video', src: 'img_isu/demo.mp4', poster: 'img_isu/cover.webp', caption: 'Live demo — interactive visual meditation' },
+        { type: 'video', src: 'img_isu/demo-web.mp4', poster: 'img_isu/cover.webp', caption: 'Live demo — interactive visual meditation' },
       ]
     },
 
@@ -889,7 +889,7 @@ The challenge was to make 13 weeks of content feel cohesive, personal, and worth
         { type: 'placeholder', label: 'Add final spread photography or scan of the finished zine here' },
         // { type: 'image', src: 'img/zine_spread3.webp', caption: 'Final spread — cover section' },
         // { type: 'image', src: 'img/zine_spread4.webp', caption: 'Final spread — closing section' },
-        // { type: 'video', src: 'img/zine_flipthrough.mp4', caption: 'Zine flip-through' },
+        // { type: 'video', src: 'img/zine_flipthrough-web.mp4', caption: 'Zine flip-through' },
       ]
     },
 
