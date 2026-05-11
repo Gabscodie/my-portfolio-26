@@ -16,6 +16,7 @@
     font-display: swap;
 }
 
+
 *,
 *::before,
 *::after {
@@ -39,6 +40,13 @@ body {
     overflow: hidden;
     overscroll-behavior: none;
     -webkit-tap-highlight-color: transparent;
+}
+
+h1,
+h2,
+.hero-title,
+.project-title {
+    font-family: "Melodrama", Georgia, serif;
 }
 
 :root {
