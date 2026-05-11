@@ -980,20 +980,3 @@ document.querySelectorAll('.fade-up').forEach((el, i) => { el.style.transitionDe
 
 /* ── COPY EMAIL ── */
 function copyEmail(btn) { navigator.clipboard.writeText('gabriella.hoangg@gmail.com').then(() => { btn.textContent = 'Copied!'; btn.classList.add('copied'); setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 2000); }); }
-
-/* ── CURSOR ── */
-const cur = document.getElementById("cursor");
-
-if (cur) {
-  document.addEventListener("mousemove", (e) => {
-    cur.style.left = `${e.clientX}px`;
-    cur.style.top = `${e.clientY}px`;
-  });
-
-  document.querySelectorAll(
-    "a, button, .proj-tab, .nav-tab, .value-pill, .footer-link, .skill-chip, .about-value-card, .proj-grid-card, .pg-card, .copy-btn"
-  ).forEach((el) => {
-    el.addEventListener("mouseenter", () => cur.classList.add("big"));
-    el.addEventListener("mouseleave", () => cur.classList.remove("big"));
-  });
-}
