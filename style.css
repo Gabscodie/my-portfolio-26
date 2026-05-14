@@ -1538,7 +1538,6 @@ h2,
 }
 
 .proj-section {
-    min-height: 100%;
     padding: clamp(2rem, 5vw, 4rem) clamp(1.5rem, 6vw, 5rem);
     border-bottom: 1px solid var(--warm);
 }
@@ -1551,14 +1550,8 @@ h2,
     margin-bottom: 1.25rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: .8rem;
-}
-
-.proj-section-label::before {
-    content: '';
-    width: 1.5rem;
-    height: 1px;
-    background: var(--stone)
 }
 
 .proj-section-title {
@@ -1610,19 +1603,6 @@ h2,
     opacity: 0.75;
 }
 
-.evidence-video-wrap {
-    width: 100%;
-    overflow: hidden;
-    border-radius: 18px;
-}
-
-.evidence-video-wrap video {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-    background: var(--cream);
-}
 
 .evidence-video-item,
 .evidence-img-item {
@@ -1640,27 +1620,6 @@ h2,
     width: 100%;
     display: block;
     object-fit: cover;
-}
-
-.evidence-label {
-    margin-top: 0.75rem;
-    margin-bottom: 0;
-    font-size: 0.9rem;
-    line-height: 1.5;
-    opacity: 0.75;
-}
-
-.evidence-video-item.landscape .evidence-video-wrap video {
-    aspect-ratio: 16 / 9;
-}
-
-.evidence-video-item.portrait .evidence-video-wrap video {
-    aspect-ratio: 9 / 16;
-}
-
-.evidence-video-item.square .evidence-video-wrap video {
-    max-height: 400px;
-    aspect-ratio: 1 / 1;
 }
 
 .evidence-row--center {
@@ -1704,8 +1663,7 @@ h2,
     font-style: italic;
     color: var(--ink);
     line-height: 1.7;
-    font-weight: 300;
-    max-width: 60ch;
+    font-weight: 600;
 }
 
 .proj-steps {
@@ -1865,18 +1823,6 @@ h2,
     transform: scale(1.02);
 }
 
-.evidence-video-wrap {
-    border-radius: 12px;
-    overflow: hidden;
-    background: var(--ink);
-}
-
-.evidence-video-wrap video {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
 .evidence-iframe-wrap {
     border-radius: 12px;
     overflow: hidden;
@@ -1929,13 +1875,18 @@ h2,
     margin-bottom: 0;
 }
 
-.evidence-label {
-    font-size: .7rem;
-    letter-spacing: .1em;
-    text-transform: uppercase;
-    color: var(--stone);
-    padding: .6rem .75rem 0;
-    line-height: 1.4;
+/* Make each evidence card feel grouped with its own title */
+.evidence-video-item,
+.evidence-img-item {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Keep captions aligned better across a row */
+.evidence-video-item .evidence-label,
+.evidence-img-item .evidence-label {
+    min-height: 3.2em;
 }
 
 .fade-up {
@@ -2030,6 +1981,104 @@ h2,
 /* Caption */
 .flex-evidence-gallery .evidence-label {
     margin-top: 6px;
+}
+
+.evidence-row--triple {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: start;
+}
+
+.evidence-row--triple .evidence-cell {
+    min-width: 0;
+}
+
+@media (max-width: 900px) {
+    .evidence-row--triple {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .evidence-row--triple {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Keep evidence rows aligned */
+.evidence-gallery {
+    width: 100%;
+    margin: 1.5rem 0 2rem;
+}
+
+.evidence-row {
+    align-items: start;
+}
+
+.evidence-cell {
+    min-width: 0;
+}
+
+/* Video card */
+.evidence-video-item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Ratio belongs to the wrapper, not the video */
+.evidence-video-wrap {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 16px;
+}
+
+/* Portrait video frame */
+.evidence-video-item.portrait .evidence-video-wrap {
+    /* aspect-ratio: 9 / 16; */
+}
+
+/* Square video frame */
+.evidence-video-item.square .evidence-video-wrap {
+    aspect-ratio: 1 / 1;
+}
+
+/* Landscape video frame */
+.evidence-video-item.landscape .evidence-video-wrap {
+    /* aspect-ratio: 16 / 9;  */
+}
+
+/* Keep original video ratio, no stretching */
+.evidence-video-wrap video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    object-position: center;
+}
+
+/* Caption: not uppercase, stronger, cleaner */
+.evidence-label {
+    margin-top: 0.85rem;
+    padding: 0;
+    font-size: 0.92rem;
+    line-height: 1.35;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink);
+    opacity: 0.82;
+}
+
+/* Keep caption spacing visually consistent under videos */
+.evidence-video-item .evidence-label {
+    min-height: 2.6em;
+}
+
+/* Optional: make 3-column evidence row breathe better */
+.evidence-row--3,
+.evidence-row--triple {
+    gap: 1.25rem;
 }
 
 /* Tablet */

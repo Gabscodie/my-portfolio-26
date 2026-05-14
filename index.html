@@ -76,7 +76,7 @@
                 <div class="intro-about-section">
                     <div class="intro-about-photo-col">
                         <div class="intro-photo-wrap">
-                            <img src="me-cover.webp" style="width:100%;height:100%;object-fit:cover;" />
+                            <img src="me/me-cover.webp" style="width:100%;height:100%;object-fit:cover;" />
                         </div>
                         <!-- Simple one-line caption, no fill/badge -->
                         <p class="photo-caption">Gabriella Hoang · Sydney</p>
@@ -212,6 +212,21 @@
                         <p class="page-tagline">Selected Projects · 2021–2026</p>
                     </div>
                     <div class="proj-grid">
+                        <div class="proj-grid-card" onclick="openProject('sun-safety')">
+                            <div class="proj-grid-thumb">
+                                <video src="img_sun/sun-cover-web.mp4" alt="sun protection cover" autoplay loop muted
+                                    playsinline></video>
+                                <span class="proj-grid-year">2026</span>
+                            </div>
+                            <div class="proj-grid-info">
+                                <div class="proj-grid-num">01</div>
+                                <div class="proj-grid-title">Sun Scanner — Sun Safety Awareness App</div>
+                                <div class="project-tags">
+                                    <span class="tag">Co-design</span>
+                                    <span class="tag">UX/UI</span>
+                                </div>
+                            </div>
+                        </div>
                         <div class="proj-grid-card" onclick="openProject('peace')">
                             <div class="proj-grid-thumb">
                                 <video src="img_peace/cover-web.mp4" poster="img_peace/cover.webp" autoplay loop muted
@@ -219,7 +234,7 @@
                                 <span class="proj-grid-year">2025</span>
                             </div>
                             <div class="proj-grid-info">
-                                <div class="proj-grid-num">01</div>
+                                <div class="proj-grid-num">02</div>
                                 <div class="proj-grid-title">Peace — Mental Health Support System</div>
                                 <div class="project-tags"><span class="tag">System Design</span> <span class="tag">UX/UI
                                     </span></div>
@@ -232,7 +247,7 @@
                                 <span class="proj-grid-year">2025</span>
                             </div>
                             <div class="proj-grid-info">
-                                <div class="proj-grid-num">02</div>
+                                <div class="proj-grid-num">03</div>
                                 <div class="proj-grid-title">CHOCO EMO — A Chocolate Collection for Your Emotions</div>
                                 <div class="project-tags"><span class="tag">Product Design</span><span
                                         class="tag">Advertising Strategy</span></div>
@@ -245,7 +260,7 @@
                                 <span class="proj-grid-year">2025</span>
                             </div>
                             <div class="proj-grid-info">
-                                <div class="proj-grid-num">06</div>
+                                <div class="proj-grid-num">04</div>
                                 <div class="proj-grid-title">Meditation Creative Coding</div>
                                 <div class="project-tags"><span class="tag">Interactive Coding</span><span
                                         class="tag">UX/UI</span></div>
@@ -258,7 +273,7 @@
                                 <span class="proj-grid-year">2025</span>
                             </div>
                             <div class="proj-grid-info">
-                                <div class="proj-grid-num">03</div>
+                                <div class="proj-grid-num">05</div>
                                 <div class="proj-grid-title">SantéLuximun Sparkling Water</div>
                                 <div class="project-tags"><span class="tag">Branding</span><span class="tag">Graphic
                                         Design</span></div>
@@ -322,7 +337,7 @@
                     <div class="about-right">
                         <div class="portrait-wrap">
                             <div class="portrait-img">
-                                <img src="human.webp" style="width:100%;height:100%;object-fit:cover;" />
+                                <img src="me/human.webp" style="width:100%;height:100%;object-fit:cover;" />
                             </div>
                         </div>
                     </div>
@@ -341,61 +356,63 @@
                         <!-- Wide feature card (spans 2 cols) -->
                         <div class="pg-card wide">
                             <div class="pg-thumb" style="background:linear-gradient(135deg,#D4A5A0,#8C7B6B);">
-                                <!-- <img src="img/personal-featured.jpg" alt="Featured" /> -->
-                                <p class="pg-thumb-placeholder">Add featured photo here</p>
-                                <span class="pg-tag-badge">Featured</span>
+                                <img src="me/forest.webp" alt="Featured" />
+                                <p class="pg-thumb-placeholder"></p>
+                                <span class="pg-tag-badge">Nature</span>
                             </div>
                             <div class="pg-card-info">
-                                <h5>Featured Project or Moment</h5>
-                                <p>Short caption goes here</p>
+                                <h5>I love the forest, the moon and the sun</h5>
+                                <p>I love the feeling of being alive and just enjoy whatever I see, hear or touch.</p>
                             </div>
                         </div>
                         <!-- Card 2 -->
                         <div class="pg-card">
                             <div class="pg-thumb" style="background:linear-gradient(135deg,#7A9E7E,#2C2825);">
-                                <!-- <img src="img/personal2.jpg" alt="" /> -->
-                                <p class="pg-thumb-placeholder">Photo 2</p>
-                                <span class="pg-tag-badge">Illustration</span>
+                                <img src="me/art.webp" alt="" />
+                                <span class="pg-tag-badge">Inspiration</span>
                             </div>
                             <div class="pg-card-info">
-                                <h5>Project Name</h5>
-                                <p>Caption</p>
+                                <h5>I love seeing colours</h5>
+                                <p>Colours, shapes, and behaviours make me curious
+                                    about the stories hidden in the world. They help me
+                                    understand, grow, and keep my love for exploration alive.</p>
                             </div>
                         </div>
                         <!-- Card 3 -->
                         <div class="pg-card">
                             <div class="pg-thumb" style="background:linear-gradient(135deg,#99AEEF,#534AB7);">
-                                <!-- <img src="img/personal3.jpg" alt="" /> -->
-                                <p class="pg-thumb-placeholder">Photo 3</p>
-                                <span class="pg-tag-badge">Photography</span>
+                                <img src="me/tea.webp" alt="" />
+                                <span class="pg-tag-badge">Ritual</span>
                             </div>
                             <div class="pg-card-info">
-                                <h5>Project Name</h5>
-                                <p>Caption</p>
+                                <h5>I love sharing and connecting</h5>
+                                <p>I love activities that bring people together through genuine
+                                    connection. Whether it is tea,
+                                    nature, stories, or small rituals, I am drawn to moments where people can slow down,
+                                    feel present, and connect with each
+                                    other.</p>
                             </div>
                         </div>
                         <!-- Card 4 -->
                         <div class="pg-card">
                             <div class="pg-thumb" style="background:linear-gradient(135deg,#EDE5D4,#C8B99A);">
-                                <!-- <img src="img/personal4.jpg" alt="" /> -->
-                                <p class="pg-thumb-placeholder">Photo 4</p>
-                                <span class="pg-tag-badge">Sketchbook</span>
+                                <img src="me/tra.webp" alt="" />
+                                <span class="pg-tag-badge">Travel</span>
                             </div>
                             <div class="pg-card-info">
-                                <h5>Project Name</h5>
-                                <p>Caption</p>
+                                <h5>I love new things</h5>
+                                <p>Either being alone or with people, my mood can easily get hyped at new places</p>
                             </div>
                         </div>
                         <!-- Card 5 -->
                         <div class="pg-card">
                             <div class="pg-thumb" style="background:linear-gradient(135deg,#D97B4F,#2C2825);">
-                                <!-- <img src="img/personal5.jpg" alt="" /> -->
-                                <p class="pg-thumb-placeholder">Photo 5</p>
-                                <span class="pg-tag-badge">Life</span>
+                                <img src="me/sushi.webp" alt="" />
+                                <span class="pg-tag-badge">Food</span>
                             </div>
                             <div class="pg-card-info">
-                                <h5>Moment Name</h5>
-                                <p>Caption</p>
+                                <h5>I love freshness</h5>
+                                <p>Sushi is my favourite food. Fruit is the second. Just juicy, fresh and umami</p>
                             </div>
                         </div>
                         <!-- Add more .pg-card blocks as needed -->

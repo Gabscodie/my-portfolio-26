@@ -64,11 +64,7 @@ function renderMediaItem(item, fg) {
 }
 function buildEvidenceGallery(mediaArray, fg, label) {
   if (!mediaArray || mediaArray.length === 0) {
-    return `
-      <div class="evidence-placeholder" style="background:${fg};border-radius:12px;margin-bottom:1.25rem">
-        ${label || 'Add images or video here'}
-      </div>
-    `;
+    return '';
   }
 
   let html = `<div class="evidence-gallery">`;
@@ -103,19 +99,20 @@ function buildEvidenceGallery(mediaArray, fg, label) {
     }
 
     // Portrait / square waits to be paired
+    // Portrait / square waits to be grouped
     else {
       pairBuffer.push(item);
 
-      if (pairBuffer.length === 2) {
+      if (pairBuffer.length === 3) {
         html += `
-          <div class="evidence-row evidence-row--pair">
-            ${pairBuffer.map(bufferItem => `
-              <div class="evidence-cell">
-                ${renderMediaItem(bufferItem, fg)}
-              </div>
-            `).join('')}
+      <div class="evidence-row evidence-row--triple">
+        ${pairBuffer.map(bufferItem => `
+          <div class="evidence-cell">
+            ${renderMediaItem(bufferItem, fg)}
           </div>
-        `;
+        `).join('')}
+      </div>
+    `;
         pairBuffer = [];
       }
     }
@@ -124,14 +121,14 @@ function buildEvidenceGallery(mediaArray, fg, label) {
   // Flush remaining single portrait/square item
   if (pairBuffer.length > 0) {
     html += `
-      <div class="evidence-row evidence-row--pair">
-        ${pairBuffer.map(bufferItem => `
-          <div class="evidence-cell">
-            ${renderMediaItem(bufferItem, fg)}
-          </div>
-        `).join('')}
-      </div>
-    `;
+    <div class="evidence-row evidence-row--triple evidence-row--${pairBuffer.length}">
+      ${pairBuffer.map(bufferItem => `
+        <div class="evidence-cell">
+          ${renderMediaItem(bufferItem, fg)}
+        </div>
+      `).join('')}
+    </div>
+  `;
   }
 
   html += `</div>`;
@@ -195,11 +192,7 @@ function renderImageRows(items, fg, mode) {
 
 function buildFlexibleEvidenceGallery(mediaArray, fg, label) {
   if (!mediaArray || mediaArray.length === 0) {
-    return `
-      <div class="evidence-placeholder" style="background:${fg};border-radius:12px;margin-bottom:1.25rem">
-        ${label || 'Add evidence here'}
-      </div>
-    `;
+    return '';
   }
 
   const regularImages = mediaArray.filter(item =>
@@ -223,6 +216,188 @@ function buildFlexibleEvidenceGallery(mediaArray, fg, label) {
 
 /* ── PROJECT DATA ── */
 const projects = {
+  'sun-safety': {
+    name: 'Sun Scanner',
+    type: 'UX Research · Co-design · UX/UI Design · Health Behaviour',
+    year: '2026',
+    hc: ['#FFF7C7', '#8FB7FF'],
+    hl: 'Making UV Risk Visible Before It Becomes Damage',
+
+    context: {
+      sub: 'Sun Safety Awareness <br>of Young Adults',
+      body: `
+      Sun Scanner is a co-design project exploring how young adults perceive UV risks and make sun-protection decisions in everyday life.
+
+      <br><br>
+
+      The project began with a clear tension: young adults often know sun protection matters, but their actual behaviour is shaped by comfort, convenience, appearance, weather perception, and personal experiences about UV and products.
+
+      <br><br>
+
+Working in a team, we translated workshop insights into an AR-supported mobile app concept that helps young adults visualise invisible UV risk through skin scanning, personalised feedback, and actionable sun-protection guidance.    `,
+
+      meta: [
+        { l: 'Role', v: 'Workshop Facilitator <br>UX/UI Designer' },
+        { l: 'Methods', v: 'Workshops <br>Co-design <br>Thematic Analysis' },
+        { l: 'Output', v: 'Sun Safety Concept Development<br>Hi-fidelity Wireframes' }
+      ],
+
+      evidence: [
+        {
+          type: 'video',
+          format: 'portrait',
+          src: 'img_sun/uv-web.mp4',
+          caption: 'UV on the forefront and clear interpretation of weather app'
+        },
+        {
+          type: 'video',
+          format: 'portrait',
+          src: 'img_sun/scan-web.mp4',
+          caption: 'Skin Scanner showing areas of your skin being protected/damaged'
+        },
+        {
+          type: 'video',
+          format: 'portrait',
+          src: 'img_sun/action-web.mp4',
+          caption: 'Allow actionable plan for sun protection habits'
+        },
+      ]
+    },
+
+    solution: {
+      sub: 'An AR-intergrated Weather App Rebuilt Around UV',
+      body: `
+      Instead of asking users to build a new habit from scratch, the app places sun safety inside something they already do: checking the weather. The Home screen shows the daily UV index, peak-risk time, and a simple protection checklist. The Learn tab provides accessible sun-safety information about UV, SPF, skin damage, and protection methods.
+
+      <br><br>
+
+      The main feature is Skin Mirror, an AR skin scanner that helps users scan their skin before and after sun exposure. Before going outside, it highlights areas that may need more protection. After exposure, it helps users understand possible exposure patterns and receive personalised prevention tips.
+
+      <br><br>
+
+      The filter is responsive to young adults' interests as it can be intergrated in other social media platforms. 
+      `,
+
+      metrics: [
+        { n: '1', d: 'Portable' },
+        { n: '2', d: 'Visible' },
+        { n: '3', d: 'Actionable' },
+        { n: '2', d: 'Joyful and Updated' },
+      ],
+
+      evidence: [
+        {
+          type: 'image',
+          format: 'landscape',
+          src: 'img_sun/hi-fi.webp',
+        }
+      ]
+    },
+
+    intent: {
+      sub: 'The Challenge',
+      body: `
+In Australia, UV exposure carries serious long-term health risks, including one of the world’s highest skin cancer burdens.
+
+<br><br>
+
+Yet our research showed that young adults rarely make sun-protection decisions through UV knowledge alone. Instead, they rely on immediate cues: heat, brightness, clothing, comfort, convenience, appearance, and product trust.
+
+<br><br>
+
+This created the core problem: UV risk is high, but it is often invisible, hidden, or easy to ignore at the moment protection decisions are made.
+`,
+
+      quote: `"How might we make invisible UV risk visible and personally relevant, so young adults can act earlier without making sun protection feel like another task?"`,
+
+      evidence: [
+        {
+          type: 'image',
+          src: 'img_sun/pop-up.webp',
+          caption: 'Pop-up and literature findings: awareness exists, but protection remains inconsistent'
+        }
+      ]
+    },
+
+    moves: {
+      sub: 'Co-design Process & Methodology',
+      layout: 'flexible',
+      steps: [
+        {
+          n: '01',
+          t: 'Exploring Workshop: Map Real Behaviour',
+          b: `
+          We used a misconception scale and sun-safety journey map to understand how participants made protection decisions across a normal university day.
+        `
+        },
+        {
+          n: '02',
+          t: 'Exploring Workshop: Find the Barriers',
+          b: `
+          Thematic analysis revealed that sun protection was not just an awareness issue. It was affected by comfort, trust, visible skin, weather cues, and routine.
+        `
+        },
+        {
+          n: '03',
+          t: 'Co-design Interventions',
+          b: `
+          We used Crazy 4s, SCAMPER, and voting to help participants generate and refine possible digital interventions.
+        `
+        },
+        {
+          n: '04',
+          t: 'Select the Strongest Direction',
+          b: `
+          The top ideas pointed toward visualisation, portability, and practical guidance. “Skin damage before and after visualisation” became the strongest foundation for the final concept.
+        `
+        },
+        {
+          n: '05',
+          t: 'Build Around an Existing Habit',
+          b: `
+          We combined the visualisation concept with a familiar weather-app pattern, so UV awareness could sit inside a routine users already perform.
+        `
+        }
+      ],
+
+      evidence: [
+        {
+          type: 'image',
+          format: 'landscape',
+          src: 'img_sun/overview.webp',
+          caption: 'Process and Methodologies'
+        }
+      ]
+    },
+
+    reflection: {
+      sub: 'What I Learned',
+      body: `
+        This project taught me that health behaviour is shaped by small, immediate trade-offs. People may care about long-term risk, but daily decisions are often made through comfort, time, appearance, weather cues, and trust.
+
+        <br><br>
+
+        I also learned that co-design needs structure. The exploratory workshop helped us understand participants’ real behaviours, while the co-design workshop helped turn those behaviours into design criteria. This made the final concept more grounded than a generic awareness app.
+
+        <br><br>
+
+        Working in a team also taught me that collaboration can be difficult when people have different personalities, working styles, and ways of making decisions. Clear roles, communication, facilitation, and documentation became essential to keep the workshop process focused and productive.
+
+        <br><br>
+
+        If I continued the project, I would test whether the Skin Mirror feature feels motivating or too confronting. I would also refine how the app communicates UV risk without using fear or shame.
+        `,
+
+      evidence: [
+        {
+          type: 'image',
+          format: 'landscape',
+          src: 'img_sun/ref.webp',
+          caption: 'Co-design Process'
+        }
+      ]
+    }
+  },
 
   'peace': {
     name: 'Peace — Mental Health Support Agency',
@@ -232,7 +407,7 @@ const projects = {
     hl: 'Helping Young Adults Find the Right Mental Health Support',
 
     context: {
-      sub: 'Client & Scope',
+      sub: 'Peace <br> Mental Health Support Agency',
 
       body: `
       Peace is a service and UX design project developed in a team of three, responding to the mental health access gap experienced by young adults in Australia.
@@ -257,23 +432,139 @@ const projects = {
         },
         {
           l: 'Team',
-          v: 'Group Project · 3 Members'
+          v: 'Group Project'
         },
         {
           l: 'Output',
-          v: 'Mental Health Support Agency + App System'
+          v: 'Mental Health Support Agency<br>App System'
         }
       ],
 
       evidence: [
         {
-          type: 'image',
-          src: 'img_peace/cover.webp',
-          caption: 'Peace — project cover'
+          type: 'video',
+          format: 'portrait',
+          src: 'img_peace/log-web.mp4',
+          caption: 'Log-in'
+        },
+        {
+          type: 'video',
+          format: 'portrait',
+          src: 'img_peace/emo-web.mp4',
+          caption: 'Emotion Check-in'
+        },
+        {
+          type: 'video',
+          format: 'portrait',
+          src: 'img_peace/book-web.mp4',
+          caption: 'Booking session'
         }
       ]
     },
 
+    solution: {
+      sub: 'Final Design',
+
+      body: `
+      The final outcome is Peace — a mental health support agency supported by an omnichannel digital system.
+
+      <br><br>
+
+      Peace helps young adults articulate their needs, compare suitable therapists, understand available options, and book support with greater confidence. The system includes therapist matching, preference-based filters, simplified booking, emotional check-ins, and support tools for the waiting period before therapy begins.
+
+      <br><br>
+
+      Rather than replacing professional care, Peace acts as a guided access layer between young people and mental health providers, reducing uncertainty and helping users feel more prepared to take the first step.
+    `,
+
+      metrics: [
+        {
+          n: '1',
+          d: 'Omni-Channels'
+        },
+        {
+          n: '2',
+          d: 'Instant Support'
+        },
+        {
+          n: '3',
+          d: 'Flexible and Personalised'
+        }
+      ],
+
+      evidence: [
+        {
+          type: 'video',
+          format: 'landscape',
+          src: 'img_peace/dashboard-web.mp4',
+          poster: 'img_peace/dashboard-cover.webp',
+          caption: 'Professional Management System'
+        },
+        {
+          type: 'video',
+          format: 'landscape',
+          src: 'img_peace/therapist-web.mp4',
+          poster: 'img_peace/therapists-cover.webp',
+          caption: 'Therapist Profile & Matching Interface'
+        },
+        {
+          type: 'video',
+          format: 'landscape',
+          src: 'img_peace/patient-web.mp4',
+          poster: 'img_peace/patient-cover.webp',
+          caption: 'Patient Profile & Booking Flow'
+        },
+        {
+          type: 'video',
+          format: 'portrait',
+          src: 'img_peace/fil-web.mp4',
+          caption: 'Advanced filters to match suitable psychotherapist'
+        },
+        {
+          type: 'video',
+          format: 'portrait',
+          src: 'img_peace/rate-web.mp4',
+          caption: 'Rate and review after session'
+        },
+        {
+          type: 'video',
+          format: 'portrait',
+          src: 'img_peace/det-web.mp4',
+          caption: 'Schedule Confirmation'
+        },
+        {
+          type: 'video',
+          format: 'portrait',
+          src: 'img_peace/pro-web.mp4',
+          caption: 'Therapist Profile'
+        },
+        {
+          type: 'video',
+          format: 'portrait',
+          src: 'img_peace/gen-web.mp4',
+          caption: 'AI Support'
+        },
+        {
+          type: 'video',
+          format: 'portrait',
+          src: 'img_peace/se-web.mp4',
+          caption: 'Searching Function'
+        },
+        {
+          type: 'video',
+          format: 'square',
+          src: 'img_peace/watch-interface-web.mp4',
+          poster: 'img_peace/watch-interface-cover.webp',
+          caption: 'Smartwatch Emotional Support'
+        },
+        {
+          type: 'video',
+          format: 'portrait',
+          src: 'img_peace/mul-web.mp4',
+          caption: 'Multi-Channel Connection'
+        }
+      ]
+    },
     intent: {
       sub: 'The Challenge',
 
@@ -283,20 +574,22 @@ const projects = {
       <br><br>
 
       Through our research, we found that the challenge was not only about providing more information. Many young people already know that support exists, but they lack guidance, trust, and emotional reassurance when deciding who to contact and whether a therapist is suitable for them.
-
-      <br><br>
-
-      <strong>
-        How might we create a more supportive and trustworthy pathway for young adults to find mental health professionals who match their needs, preferences, and personal context?
-      </strong>
     `,
 
-      quote: `"Mental health access is not only a booking problem — it is a trust, suitability, and emotional readiness problem."`,
-
+      quote: `"How might we create a more supportive and trustworthy pathway for young adults to find mental health professionals who match their needs, preferences, and personal context?
+    "`,
       evidence: [
         {
-          type: 'placeholder',
-          label: 'Add research evidence — journey maps, personas, survey results'
+          type: 'image',
+          format: 'landscape',
+          src: 'img_peace/wsb.webp',
+          caption: 'Smart Watch Instant Support Scenario'
+        },
+        {
+          type: 'image',
+          format: 'landscape',
+          src: 'img_peace/booksb.webp',
+          caption: 'Easy Booking System Scenario'
         }
       ]
     },
@@ -342,80 +635,7 @@ const projects = {
         `
         }
       ],
-
-      evidence: [
-        {
-          type: 'placeholder',
-          label: 'Add process evidence — wireframes, whiteboard photos, user testing notes'
-        }
-      ]
-    },
-
-    solution: {
-      sub: 'Deliverables & Impact',
-
-      body: `
-      The final outcome is Peace — a mental health support agency supported by an omnichannel digital system.
-
-      <br><br>
-
-      Peace helps young adults articulate their needs, compare suitable therapists, understand available options, and book support with greater confidence. The system includes therapist matching, preference-based filters, simplified booking, emotional check-ins, and support tools for the waiting period before therapy begins.
-
-      <br><br>
-
-      Rather than replacing professional care, Peace acts as a guided access layer between young people and mental health providers, reducing uncertainty and helping users feel more prepared to take the first step.
-    `,
-
-      metrics: [
-        {
-          n: '3',
-          d: 'Team members'
-        },
-        {
-          n: '6+',
-          d: 'Research methods used'
-        },
-        {
-          n: '1',
-          d: 'Integrated agency + app system'
-        }
-      ],
-
-      evidence: [
-        {
-          type: 'video',
-          format: 'landscape',
-          src: 'img_peace/dashboard-web.mp4',
-          poster: 'img_peace/dashboard-cover.webp',
-          caption: 'Professional Management System'
-        },
-        {
-          type: 'video',
-          format: 'landscape',
-          src: 'img_peace/therapist-web.mp4',
-          poster: 'img_peace/therapists-cover.webp',
-          caption: 'Therapist Profile & Matching Interface'
-        },
-        {
-          type: 'video',
-          format: 'landscape',
-          src: 'img_peace/patient-web.mp4',
-          poster: 'img_peace/patient-cover.webp',
-          caption: 'Patient Profile & Booking Flow'
-        },
-        {
-          type: 'video',
-          format: 'square',
-          src: 'img_peace/watch-interface-web.mp4',
-          poster: 'img_peace/watch-interface-cover.webp',
-          caption: 'Smartwatch Emotional Check-in'
-        },
-        {
-          type: 'placeholder',
-          format: 'portrait',
-          label: 'Add mobile interface video — user support flow'
-        }
-      ]
+      evidence: []
     },
 
     reflection: {
@@ -434,12 +654,12 @@ const projects = {
     `,
 
       pts: [
-        'Mental health access is shaped by trust, suitability, emotional readiness, and system navigation.',
         'Service design extends beyond the app interface into the full journey before, during, and after seeking care.',
-        'Team communication is essential when working on complex and sensitive social problems.',
         'User testing helped transform the concept from a simple booking system into a more supportive matching service.',
         'If I continued the project, I would further develop the therapist matching logic and emotional onboarding experience.'
-      ]
+      ],
+
+      evidence: []
     }
   },
 
@@ -452,7 +672,7 @@ const projects = {
     hl: 'Every Emotion Deserves a Choco Treat',
 
     context: {
-      sub: 'Client & Scope',
+      sub: 'CHOCO EMO <br>A limited-edition chocolate box for your emotions',
       body: `The brief was to select a nominated entry from an awards competition and create a chocolate campaign to promote it. I chose <em>Inside Out 2</em>, translating its emotional narrative into a tangible product and multisensory experience.<br /><br />
 CHOCO EMO is a limited-edition chocolate box designed to transform emotions into an interactive ritual. My role covered concept development, 3D modelling, material simulation, packaging design, and campaign poster creation.`,
       meta: [
@@ -461,18 +681,43 @@ CHOCO EMO is a limited-edition chocolate box designed to transform emotions into
         { l: 'Output', v: 'Packaging System + Campaign Poster' }
       ],
       evidence: [
-        { type: 'image', src: 'img_cho/cover.webp', caption: 'CHOCO EMO — project cover' }
+        {
+          type: 'image',
+          src: 'img_cho/pos.webp',
+          caption: 'Final Advertising Poster'
+        }
+      ]
+    },
+
+    solution: {
+      sub: 'Final Design',
+      body: `The final outcome is a multisensory campaign and packaging system where product, form, and message work together as an emotional awareness ritual. The design reframes chocolate as more than a snack: it becomes a small moment of reflection, self-kindness, and emotional recognition.`,
+      metrics: [
+        { n: '01', d: 'Emotion-based chocolate collection' },
+        { n: '02', d: 'Laser-cut treasure box packaging' },
+        { n: '03', d: 'Campaign poster and visual identity' }
+      ],
+      evidence: [
+        {
+          type: 'image',
+          src: 'img_cho/barcho.webp',
+          format: 'landscape',
+          caption: 'Emotion-Inspired 3D Models and Chocolates'
+        },
+        {
+          type: 'image',
+          src: 'img_cho/las.webp',
+          format: 'landscape',
+          caption: 'Laser Cutting Product'
+        }
       ]
     },
 
     intent: {
       sub: 'The Challenge',
-      body: `Emotions are often overlooked or suppressed in everyday life, especially those perceived as negative. Inspired by <em>Inside Out 2</em>, this project asked how a chocolate campaign could make emotional awareness feel tangible, approachable, and memorable.<br /><br />
-<strong>How might we transform chocolate from a simple indulgence into a small emotional ritual?</strong>`,
-      quote: `"Every emotion deserves a choco treat."`,
-      evidence: [
-        { type: 'image', src: 'img_cho/moodboard.webp', caption: 'Visual and emotional inspiration from Inside Out 2' }
-      ]
+      body: `Emotions are often overlooked or suppressed in everyday life, especially those perceived as negative. Inspired by <em>Inside Out 2</em>, this project asked how a chocolate campaign could make emotional awareness feel tangible, approachable, and memorable.`,
+      quote: `"How might we transform chocolate from a simple indulgence into a small emotional ritual?"`,
+      evidence: []
     },
 
     moves: {
@@ -517,43 +762,46 @@ CHOCO EMO is a limited-edition chocolate box designed to transform emotions into
       evidence: [
         {
           type: 'image',
-          src: 'img_cho/form_iter.webp',
-          caption: 'Form iteration: single-layer to multi-compartment treasure box'
-        },
-        {
-          type: 'image',
-          src: 'img_cho/blender_iter.webp',
+          src: 'img_cho/blen.webp',
+          format: 'landscape',
           caption: 'Material and lighting tests in Blender (texture, roughness, light balance)'
         },
         {
           type: 'image',
-          src: 'img_cho/laser_iter.webp',
+          src: 'img_cho/chofu.webp',
+          format: 'landscape',
+          caption: 'Model iterations in fusion'
+        },
+        {
+          type: 'image',
+          src: 'img_cho/fulas.webp',
+          format: 'portrait',
           caption: 'Laser cutting iterations: kerf adjustment, hinge refinement, assembly testing'
         }
       ]
     },
 
-    solution: {
-      sub: 'Deliverables & Impact',
-      body: `The final outcome is a multisensory campaign and packaging system where product, form, and message work together as an emotional awareness ritual. The design reframes chocolate as more than a snack: it becomes a small moment of reflection, self-kindness, and emotional recognition.`,
-      metrics: [
-        { n: '01', d: 'Emotion-based chocolate collection' },
-        { n: '02', d: 'Laser-cut treasure box packaging' },
-        { n: '03', d: 'Campaign poster and visual identity' }
-      ],
-      evidence: [
-        { type: 'image', src: 'img_cho/final.webp', caption: 'Final CHOCO EMO campaign and packaging outcome' }
-      ]
-    },
-
     reflection: {
       sub: 'Learnings',
-      body: `This project shifted my approach from designing a product to designing a behavioural experience. I learned that strong campaign design does not need to over-explain; it should create desire, clarity, and emotional pull through form, hierarchy, and story.`,
+      body: `This project shifted my approach from designing a product to designing a behavioural experience. It also pushed me to learn intensive 3D production skills across Fusion 360 and Blender, from modelling the chocolate form and packaging structure to testing materials, lighting, and visual realism. I found it especially interesting to see how a digital 3D model could move into a physical chocolate-making process through moulding, prototyping, and fabrication. Although I am not fully satisfied with the final poster yet, the process helped me recognise that lighting and atmosphere in Blender are skills I want to keep improving when I have more time. Through this project, I learned that strong campaign design does not need to over-explain; it should create desire, clarity, and emotional pull through form, hierarchy, and story.`,
+
       pts: [
         'Packaging can become a ritual system, not just a container.',
+        '3D modelling helped translate an emotional concept into a tangible product form.',
+        'Fusion 360 and Blender became important tools for testing structure, material, lighting, and realism.',
+        'The final poster could be stronger, especially through more refined Blender lighting and atmosphere.',
         'A campaign is stronger when the message is felt before it is explained.',
         'Feedback helped me reduce text and strengthen visual hierarchy.',
-        'Speculative product design becomes more convincing when form, behaviour, and story align.'
+        'Speculative product design becomes more convincing when form, behaviour, fabrication, and story align.'
+      ],
+
+      evidence: [
+        {
+          type: 'image',
+          src: 'img_cho/pro.webp',
+          format: 'landscape',
+          caption: 'From 3D Models to Real Chocolate',
+        }
       ]
     }
   },
@@ -567,28 +815,24 @@ CHOCO EMO is a limited-edition chocolate box designed to transform emotions into
     hl: 'Reframing Heritage',
 
     context: {
-      sub: 'Client & Scope',
+      sub: 'A Fresh Look of <br>SantéLuximun Sparkling Water',
       body: `This project responds to a commercial design brief for SantéLuximun Sparkling Water — a heritage brand seeking to expand into a younger market through a new sparkling product line.<br /><br />
 My role was graphic designer responsible for developing three campaign visual concepts while working within fixed brand assets (existing logo and can design).`,
       meta: [
         { l: 'Role', v: 'Graphic Designer' },
-        { l: 'Brief', v: 'Brand Campaign' },
+        { l: 'Brief', v: 'Brand Campaign <br> Social Media Post' },
         { l: 'Constraint', v: 'Fixed logo + can assets' }
       ],
       evidence: [
-        { type: 'image', src: 'img_sp/cover.webp', caption: 'SantéLuximun — project cover' },
+        { type: 'image', src: 'img_sp/cover.webp' },
       ]
     },
 
     intent: {
       sub: 'The Challenge',
       body: `SantéLuximun carries a strong heritage identity — trusted, elegant, exclusive. But this same positioning risks alienating younger audiences who value freshness and social energy.<br /><br />
-<strong>How might the brand feel more current and socially engaging without losing its sense of refinement?</strong><br /><br />
 The brief involved competing stakeholder expectations: the marketing team wanted youthful appeal; the board wanted to preserve brand equity.`,
-      quote: `"Design can shift perception without changing identity."`,
-      evidence: [
-        { type: 'placeholder', label: 'Add brand research, competitor analysis, moodboards here' },
-      ]
+      quote: `"How might the brand feel more current and socially engaging without losing its sense of refinement?"`
     },
 
     moves: {
@@ -613,18 +857,15 @@ The brief involved competing stakeholder expectations: the marketing team wanted
         }
       ],
       evidence: [
-        { type: 'image', src: 'img_sp/class1.webp', caption: 'Classic direction' },
         { type: 'image', src: 'img_sp/class2.webp', caption: 'Classic direction' },
         { type: 'image', src: 'img_sp/class3.webp', caption: 'Classic direction' },
         { type: 'image', src: 'img_sp/class.webp', caption: 'Classic direction' },
-        { type: 'image', src: 'img_sp/bal.webp', caption: 'Balanced direction' },
         { type: 'image', src: 'img_sp/mo.webp', caption: 'Modern direction' },
         { type: 'image', src: 'img_sp/mo1.webp', caption: 'Modern direction' },
         { type: 'image', src: 'img_sp/mo2.webp', caption: 'Modern direction' },
         { type: 'image', src: 'img_sp/bal.webp', caption: 'Balanced direction' },
         { type: 'image', src: 'img_sp/bal1.webp', caption: 'Balanced direction' },
-        { type: 'image', src: 'img_sp/bal2.webp', caption: 'Balanced direction' },
-        // { type: 'video', src: 'img_sp/process-web.mp4', caption: 'Design process walkthrough' },
+        { type: 'image', src: 'img_sp/bal2.webp', caption: 'Balanced direction' }
       ]
     },
 
@@ -632,18 +873,15 @@ The brief involved competing stakeholder expectations: the marketing team wanted
       sub: 'Final Deliverables & Impact',
       body: `Three campaign visual concepts — Classic, Modern, and Balanced — each demonstrating how layout and typography alone can reposition a heritage brand. The project shows that visual language can create freshness without requiring identity change.`,
       metrics: [
-        { n: '3', d: 'Visual directions developed' },
-        { n: '01', d: 'Clearer brand repositioning' },
-        { n: '02', d: 'Balanced audience appeal' }
+        { n: '1', d: 'Visually-engaged with young audience' },
+        { n: '2', d: 'Clearer brand repositioning' },
+        { n: '3', d: 'Sustaining Elengance and Heritage values' }
       ],
       evidence: [
         { type: 'image', src: 'img_sp/sp_classic.webp', caption: 'Classic' },
         { type: 'image', src: 'img_sp/sp_balance.webp', caption: 'Balanced' },
         { type: 'image', src: 'img_sp/sp_modern.webp', caption: 'Modern' },
-        { type: 'image', src: 'img_sp/sp_square.webp', caption: 'Social Media - Modern Direction' },
-
-        // { type: 'image', src: 'img_sp/sp_square.webp', caption: 'Square format adaptation' },
-      ]
+        { type: 'image', src: 'img_sp/sp_square.webp', caption: 'Social Media - Modern Direction' },]
     },
 
     reflection: {
@@ -666,83 +904,19 @@ The brief involved competing stakeholder expectations: the marketing team wanted
     hc: ['#7A9E7E', '#2C2825'],
     hl: 'An Interactive Meditation with Light, Motion, and Sound',
 
-    // links: [
-    //   { label: 'Launch Live Experience', url: 'https://gabscodie.github.io/iseeyou/' },
-    //   { label: 'View Code', url: 'https://github.com/Gabscodie/iseeyou.git' }
-    // ],
-
     context: {
       sub: 'Client & Scope',
       body: `I SEE YOU is an interactive creative coding project developed as part of a design programming course. The brief was to create a creative web-based experience that allows users to interact with visualisation through code.<br /><br />
 Rather than designing a task-based interface, I created a contemplative digital space where users can pause, move their cursor, click, listen, and observe how their awareness visually affects a miniature universe around the body.<br /><br />
 The project explores a simple emotional premise: our thoughts and emotions may seem invisible, but they shape how we experience ourselves, our relationships, and the world around us.`,
       meta: [
-        { l: 'Role', v: 'Sole Designer · Creative Coder' },
+        { l: 'Role', v: 'Sole Designer<br>Creative Coder' },
         { l: 'Tool', v: 'p5.js' },
         { l: 'Format', v: 'Interactive Web Experience with Sound' },
-        { l: 'Focus', v: 'Self-awareness · Emotion · Generative Visualisation' }
+        { l: 'Focus', v: 'Self-awareness<br>Generative Visualisation' }
       ],
       evidence: [
-        { type: 'video', src: 'img_isu/demo-web.mp4', poster: 'img_isu/cover.webp', caption: 'Live demo — interactive visual meditation' },
-      ]
-    },
-
-    intent: {
-      sub: 'The Challenge',
-      body: `People often move through life reacting, working, and coping without enough space to recognise what is happening inside them. Emotions and thoughts are easy to dismiss because they are invisible, yet they strongly influence our wellbeing, relationships, decisions, and sense of aliveness.<br /><br />
-Many digital wellbeing tools use functional patterns such as tracking, streaks, reminders, and progress bars. While useful, these patterns can sometimes make reflection feel like another task to complete.<br /><br />
-<strong>How might an interactive website create a gentle space for users to visualise their inner world, recognise their emotions, and reconnect with themselves through movement, light, sound, and generative code?</strong><br /><br />
-The concept reframes the screen as a small universe. The cursor becomes awareness. The body becomes an emotional centre. The galaxy responds to where attention is placed.`,
-      quote: `"Hello, I see you my emotion. I know you are here. I will take care of you."`,
-      evidence: [
-        { type: 'placeholder', label: 'Add concept sketches, moodboard, or early visual references here' },
-      ]
-    },
-
-    moves: {
-      sub: 'Process & Methodology',
-      steps: [
-        {
-          n: '01',
-          t: 'Concept Framing',
-          b: 'Started with the idea that every emotion and thought carries a message about wellbeing. I translated this into a visual metaphor where the user is positioned inside a miniature universe, surrounded by energy points that represent the connection between body, mind, and emotional awareness.'
-        },
-        {
-          n: '02',
-          t: 'Metaphor System',
-          b: 'Defined the main symbolic elements: the Milky Way spiral represents the universe; the cursor represents awareness; the meditator represents the self; and seven coloured chakra lights represent different body zones and emotional centres — Mind, Eyes, Throat, Heart, Stomach, Back, and Legs.'
-        },
-        {
-          n: '03',
-          t: 'Interaction Design',
-          b: 'Designed a minimal interaction model where users do not need buttons, menus, or instructions. Moving the cursor changes the direction of the galaxy, suggesting that awareness shapes perception. Clicking activates a random light response, suggesting that thoughts and emotions can appear unpredictably and affect different parts of the body.'
-        },
-        {
-          n: '04',
-          t: 'Creative Coding',
-          b: 'Built the visual system in p5.js using rotating elliptical star paths, blinking stars, chakra particle systems, and sine/cosine motion. The galaxy is generated through hundreds of rotating paths, while the body and chakra systems are animated through particles, colour, velocity, and acceleration.'
-        },
-        {
-          n: '05',
-          t: 'Light Effect Development',
-          b: 'Created three emotional light responses: Hugging, Spreading, and Connecting. Each effect uses motion to express a different emotional quality — being held, transforming outward, or forming a connection between awareness and the body.'
-        },
-        {
-          n: '06',
-          t: 'Sound Integration',
-          b: 'Integrated ambient sound as part of the meditative atmosphere. The audio layer supports the visual rhythm of the galaxy and light effects, helping the experience feel slower, softer, and more immersive.'
-        },
-        {
-          n: '07',
-          t: 'Refinement',
-          b: 'Refined the timing, particle density, colour temperature, sound atmosphere, and randomness of the visual effects so the experience felt spacious rather than overstimulating. Each run generates a slightly different message, allowing the interaction to feel personal, reflective, and alive.'
-        }
-      ],
-      evidence: [
-        { type: 'placeholder', label: 'Add early code experiments, particle tests, or p5.js screenshots here' },
-        // { type: 'image', src: 'img_isu/process-01.webp', caption: 'Early galaxy spiral exploration' },
-        // { type: 'image', src: 'img_isu/process-02.webp', caption: 'Chakra particle system development' },
-        // { type: 'image', src: 'img_isu/process-03.webp', caption: 'Light effect iteration' },
+        { type: 'video', src: 'img_isu/overall-web.mp4', poster: 'img_isu/cover.webp', caption: 'Interactive visual meditation' },
       ]
     },
 
@@ -792,118 +966,191 @@ The concept reframes the screen as a small universe. The cursor becomes awarenes
   </div><br />
     `,
       metrics: [
-        { n: '1', d: 'Live interactive website' },
-        { n: '1', d: 'Embedded portfolio experience' },
-        { n: '1', d: 'Integrated ambient sound layer' },
-        { n: '7', d: 'Body-based chakra systems' },
-        { n: '3', d: 'Emotional light effects' },
-        { n: '800', d: 'Rotating star paths' },
-        { n: '∞', d: 'Generative visual variations' }
+        { n: '1', d: 'Generative visual variations' },
+        { n: '2', d: 'Mindfulness and Gratitude' },
+        { n: '3', d: 'Calm and Relaxing Ambience' }
       ],
       evidence: []
     },
 
-    reflection: {
-      sub: 'Learnings',
-      body: `This project helped me understand creative coding as more than a technical exercise. Code can become a soft, expressive, and emotionally intelligent medium when it is grounded in a clear conceptual system. Through I SEE YOU, I learned how interaction design can make abstract inner experiences feel visible without forcing users to explain them in words.`,
-      pts: [
-        'Creative coding can support emotional reflection, not only visual experimentation.',
-        'A strong metaphor system helps abstract concepts become understandable through interaction.',
-        'Minimal interfaces can feel more immersive when the whole canvas becomes the experience.',
-        'Sound can deepen the emotional atmosphere of an interactive visual system.',
-        'Generative randomness can make a digital experience feel more personal and alive.',
-        'Technical systems such as particles, motion, and colour become more meaningful when connected to human emotion.'
-      ]
-    }
-  },
-
-  'zine': {
-    name: 'Notes on Being a Designer',
-    type: 'Editorial Design · Publication Design',
-    year: '2024',
-    hc: ['#E9E9E9', '#B8C4B1'],
-    hl: 'Design Theory, Lived',
-
-    context: {
-      sub: 'Client & Scope',
-      body: `This editorial zine was developed across a 13-week design theory course. The task was to document and respond to weekly readings — but the approach was left open.<br /><br />
-Rather than producing annotated notes, I chose to translate theory into a personal visual narrative in zine format. My role: sole designer and author.`,
-      meta: [
-        { l: 'Role', v: 'Designer · Author' },
-        { l: 'Duration', v: '13 weeks' },
-        { l: 'Format', v: 'Editorial Zine' }
-      ],
-      evidence: [
-        { type: 'placeholder', label: 'Add cover image of the zine here' },
-        // { type: 'image', src: 'img/zine_cover.webp', caption: 'Zine cover' },
-      ]
-    },
-
     intent: {
       sub: 'The Challenge',
-      body: `Design theory is often taught as something to be absorbed and repeated. But the most valuable insights from theory come when you connect them to lived experience.<br /><br />
-<strong>How might a publication communicate design theory through emotion, reflection, and storytelling — rather than explanation?</strong><br /><br />
-The challenge was to make 13 weeks of content feel cohesive, personal, and worth reading.`,
-      quote: `"Every moment of being human counts as design material."`,
-      evidence: [
-        { type: 'placeholder', label: 'Add early sketches, layout explorations, or content mapping here' },
-      ]
+      body: `People often move through life reacting, working, and coping without enough space to recognise what is happening inside them. Emotions and thoughts are easy to dismiss because they are invisible, yet they strongly influence our wellbeing, relationships, decisions, and sense of aliveness.<br /><br />
+Many digital wellbeing tools use functional patterns such as tracking, streaks, reminders, and progress bars. While useful, these patterns can sometimes make reflection feel like another task to complete.<br /><br />
+The concept reframes the screen as a small universe. The cursor becomes awareness. The body becomes an emotional centre. The galaxy responds to where attention is placed.`,
+      quote: `"How might an interactive website create a gentle space for users to visualise their inner world, recognise their emotions, and reconnect with themselves through movement, light, sound, and generative code?"`,
+      evidence: []
     },
 
     moves: {
       sub: 'Process & Methodology',
       steps: [
         {
-          n: '01', t: 'Research & Reading',
-          b: 'Collected 13 weeks of theory, identifying recurring themes: Country, storytelling, graphic design history, and design as meaning-making. Looked for the emotional thread connecting them all.'
+          n: '01',
+          t: 'Concept Framing',
+          b: 'Started with the idea that every emotion and thought carries a message about wellbeing. I translated this into a visual metaphor where the user is positioned inside a miniature universe, surrounded by energy points that represent the connection between body, mind, and emotional awareness.'
         },
         {
-          n: '02', t: 'Narrative Framing',
-          b: 'Reframed the content as a continuous personal story rather than a summary document. Decided early that the zine would be written in first person and include hand-drawn visual marks.'
+          n: '02',
+          t: 'Metaphor System',
+          b: 'Defined the main symbolic elements: the Milky Way spiral represents the universe; the cursor represents awareness; the meditator represents the self; and seven coloured chakra lights represent different body zones and emotional centres — Mind, Eyes, Throat, Heart, Stomach, Back, and Legs.'
         },
         {
-          n: '03', t: 'Editorial Design',
-          b: 'Designed layout, typography, and image placement to create a reflective reading pace. Used softness, negative space, and visual quietness to mirror the reflective tone of the writing.'
+          n: '03',
+          t: 'Interaction Design',
+          b: 'Designed a minimal interaction model where users do not need buttons, menus, or instructions. Moving the cursor changes the direction of the galaxy, suggesting that awareness shapes perception. Clicking activates a random light response, suggesting that thoughts and emotions can appear unpredictably and affect different parts of the body.'
         },
         {
-          n: '04', t: 'Refinement',
-          b: 'Adjusted spread pacing and composition to ensure the zine felt coherent as both a theoretical and personal publication — not just a collection of weekly entries.'
+          n: '04',
+          t: 'Creative Coding',
+          b: 'Built the visual system in p5.js using rotating elliptical star paths, blinking stars, chakra particle systems, and sine/cosine motion. The galaxy is generated through hundreds of rotating paths, while the body and chakra systems are animated through particles, colour, velocity, and acceleration.'
+        },
+        {
+          n: '05',
+          t: 'Light Effect Development',
+          b: 'Created three emotional light responses: Hugging, Spreading, and Connecting. Each effect uses motion to express a different emotional quality — being held, transforming outward, or forming a connection between awareness and the body.'
+        },
+        {
+          n: '06',
+          t: 'Sound Integration',
+          b: 'Integrated ambient sound as part of the meditative atmosphere. The audio layer supports the visual rhythm of the galaxy and light effects, helping the experience feel slower, softer, and more immersive.'
+        },
+        {
+          n: '07',
+          t: 'Refinement',
+          b: 'Refined the timing, particle density, colour temperature, sound atmosphere, and randomness of the visual effects so the experience felt spacious rather than overstimulating. Each run generates a slightly different message, allowing the interaction to feel personal, reflective, and alive.'
         }
       ],
       evidence: [
-        { type: 'placeholder', label: 'Add spread development, layout iterations, or drafts here' },
-        // { type: 'image', src: 'img/zine_spread1.webp', caption: 'Spread — week 1–3' },
-        // { type: 'image', src: 'img/zine_spread2.webp', caption: 'Spread — mid-zine development' },
-      ]
-    },
-
-    solution: {
-      sub: 'Deliverables & Impact',
-      body: `A cohesive editorial zine presenting 13 weeks of design theory as an intimate personal narrative. The publication demonstrates how editorial design can hold intellectual complexity while remaining emotionally accessible.`,
-      metrics: [
-        { n: '13', d: 'Weeks synthesised' },
-        { n: '01', d: 'Cohesive editorial narrative' },
-        { n: '02', d: 'Theory made personal' }
-      ],
-      evidence: [
-        { type: 'placeholder', label: 'Add final spread photography or scan of the finished zine here' },
-        // { type: 'image', src: 'img/zine_spread3.webp', caption: 'Final spread — cover section' },
-        // { type: 'image', src: 'img/zine_spread4.webp', caption: 'Final spread — closing section' },
-        // { type: 'video', src: 'img/zine_flipthrough-web.mp4', caption: 'Zine flip-through' },
+        {
+          type: 'video',
+          src: 'img_isu/reminder-web.mp4',
+          caption: 'Each reload generates a unique message'
+        },
+        {
+          type: 'video',
+          src: 'img_isu/univ-web.mp4',
+          caption: 'The universe moves with your mouse, as if you are guiding your inner world'
+        }
       ]
     },
 
     reflection: {
       sub: 'Learnings',
-      body: 'This project taught me that design theory becomes more meaningful when interpreted through lived experience. I also learned that editorial design is itself a form of argument — how you arrange ideas shapes what they mean.',
+      body: `This project helped me understand creative coding as more than a technical exercise. Code can become a soft, expressive, and emotionally intelligent medium when it is grounded in a clear conceptual system. Through I SEE YOU, I learned how interaction design can make abstract inner experiences feel visible without forcing users to explain them in words.
+
+<br><br>
+
+Technically, this project was also challenging because I had to figure out the logic behind drawing the human body, creating the explosion effect, and building the rotating universe spiral through code. These were not just visual effects; they became part of the emotional language of the experience. The more I refined the particles, movement, and body form, the more I understood how technical decisions could shape the feeling of softness, awareness, and inner connection.`,
+
       pts: [
-        'Theory can be communicated through feeling, not only explanation.',
-        'Editorial pacing shapes how ideas are absorbed — slower is sometimes more.',
-        'Personal reflection can strengthen theoretical work by grounding abstract ideas.',
-        'Visual storytelling helps theory become more accessible and memorable.'
+        'Creative coding can support emotional reflection, not only visual experimentation.',
+        'A strong metaphor system helps abstract concepts become understandable through interaction.',
+        'Drawing the human body through code was challenging, but it helped me understand how form can carry emotional meaning.',
+        'The explosion effect and rotating universe spiral taught me how motion logic can create atmosphere and feeling.',
+        'Minimal interfaces can feel more immersive when the whole canvas becomes the experience.',
+        'Sound can deepen the emotional atmosphere of an interactive visual system.',
+        'Generative randomness can make a digital experience feel more personal and alive.',
+        'Technical systems such as particles, motion, colour, and body logic become more meaningful when connected to human emotion.'
+      ],
+
+      evidence: [
+        {
+          type: 'video',
+          src: 'img_isu/chakras-web.mp4',
+          caption: 'The seven chakras act as symbolic energy points in the body. Each one responds to your attention, reminding you that caring for your inner world starts with noticing where your energy is held.'
+        }
       ]
     }
-  }
+  },
+
+  //   'zine': {
+  //     name: 'Notes on Being a Designer',
+  //     type: 'Editorial Design · Publication Design',
+  //     year: '2024',
+  //     hc: ['#E9E9E9', '#B8C4B1'],
+  //     hl: 'Design Theory, Lived',
+
+  //     context: {
+  //       sub: 'Client & Scope',
+  //       body: `This editorial zine was developed across a 13-week design theory course. The task was to document and respond to weekly readings — but the approach was left open.<br /><br />
+  // Rather than producing annotated notes, I chose to translate theory into a personal visual narrative in zine format. My role: sole designer and author.`,
+  //       meta: [
+  //         { l: 'Role', v: 'Designer · Author' },
+  //         { l: 'Duration', v: '13 weeks' },
+  //         { l: 'Format', v: 'Editorial Zine' }
+  //       ],
+  //       evidence: [
+  //         { type: 'placeholder', label: 'Add cover image of the zine here' },
+  //         // { type: 'image', src: 'img/zine_cover.webp', caption: 'Zine cover' },
+  //       ]
+  //     },
+
+  //     intent: {
+  //       sub: 'The Challenge',
+  //       body: `Design theory is often taught as something to be absorbed and repeated. But the most valuable insights from theory come when you connect them to lived experience.<br /><br />
+  // <strong>How might a publication communicate design theory through emotion, reflection, and storytelling — rather than explanation?</strong><br /><br />
+  // The challenge was to make 13 weeks of content feel cohesive, personal, and worth reading.`,
+  //       quote: `"Every moment of being human counts as design material."`,
+  //       evidence: [
+  //         { type: 'placeholder', label: 'Add early sketches, layout explorations, or content mapping here' },
+  //       ]
+  //     },
+
+  //     moves: {
+  //       sub: 'Process & Methodology',
+  //       steps: [
+  //         {
+  //           n: '01', t: 'Research & Reading',
+  //           b: 'Collected 13 weeks of theory, identifying recurring themes: Country, storytelling, graphic design history, and design as meaning-making. Looked for the emotional thread connecting them all.'
+  //         },
+  //         {
+  //           n: '02', t: 'Narrative Framing',
+  //           b: 'Reframed the content as a continuous personal story rather than a summary document. Decided early that the zine would be written in first person and include hand-drawn visual marks.'
+  //         },
+  //         {
+  //           n: '03', t: 'Editorial Design',
+  //           b: 'Designed layout, typography, and image placement to create a reflective reading pace. Used softness, negative space, and visual quietness to mirror the reflective tone of the writing.'
+  //         },
+  //         {
+  //           n: '04', t: 'Refinement',
+  //           b: 'Adjusted spread pacing and composition to ensure the zine felt coherent as both a theoretical and personal publication — not just a collection of weekly entries.'
+  //         }
+  //       ],
+  //       evidence: [
+  //         { type: 'placeholder', label: 'Add spread development, layout iterations, or drafts here' },
+  //         // { type: 'image', src: 'img/zine_spread1.webp', caption: 'Spread — week 1–3' },
+  //         // { type: 'image', src: 'img/zine_spread2.webp', caption: 'Spread — mid-zine development' },
+  //       ]
+  //     },
+
+  //     solution: {
+  //       sub: 'Deliverables & Impact',
+  //       body: `A cohesive editorial zine presenting 13 weeks of design theory as an intimate personal narrative. The publication demonstrates how editorial design can hold intellectual complexity while remaining emotionally accessible.`,
+  //       metrics: [
+  //         { n: '13', d: 'Weeks synthesised' },
+  //         { n: '01', d: 'Cohesive editorial narrative' },
+  //         { n: '02', d: 'Theory made personal' }
+  //       ],
+  //       evidence: [
+  //         { type: 'placeholder', label: 'Add final spread photography or scan of the finished zine here' },
+  //         // { type: 'image', src: 'img/zine_spread3.webp', caption: 'Final spread — cover section' },
+  //         // { type: 'image', src: 'img/zine_spread4.webp', caption: 'Final spread — closing section' },
+  //         // { type: 'video', src: 'img/zine_flipthrough-web.mp4', caption: 'Zine flip-through' },
+  //       ]
+  //     },
+
+  //     reflection: {
+  //       sub: 'Learnings',
+  //       body: 'This project taught me that design theory becomes more meaningful when interpreted through lived experience. I also learned that editorial design is itself a form of argument — how you arrange ideas shapes what they mean.',
+  //       pts: [
+  //         'Theory can be communicated through feeling, not only explanation.',
+  //         'Editorial pacing shapes how ideas are absorbed — slower is sometimes more.',
+  //         'Personal reflection can strengthen theoretical work by grounding abstract ideas.',
+  //         'Visual storytelling helps theory become more accessible and memorable.'
+  //       ]
+  //     }
+  //   }
 
 
 };
@@ -916,60 +1163,87 @@ function openProject(id) {
   const p = getProject(id);
   const g = `linear-gradient(135deg,${p.hc[0]},${p.hc[1]})`;
   const g2 = `linear-gradient(135deg,${p.hc[1]},${p.hc[0]})`;
+
   document.getElementById('proj-sidebar-name').textContent = p.name;
   document.getElementById('proj-sidebar-type').textContent = p.type;
   document.getElementById('proj-year-sidebar').textContent = `Year: ${p.year}`;
+
   const tabList = document.querySelector('.proj-tab-list');
-  tabList.innerHTML = `<li class="proj-tab active" data-section="context" onclick="scrollToSection('context',this)">Context</li><li class="proj-tab" data-section="intent" onclick="scrollToSection('intent',this)">Intent</li><li class="proj-tab" data-section="moves" onclick="scrollToSection('moves',this)">Moves</li><li class="proj-tab" data-section="solution" onclick="scrollToSection('solution',this)">Solution</li><li class="proj-tab" data-section="reflection" onclick="scrollToSection('reflection',this)">Reflection</li>`;
-  const contextMeta = (p.context.meta || []).map(m => `<div class="meta-item"><label>${m.l}</label><span>${m.v}</span></div>`).join('');
-  const steps = (p.moves.steps || []).map(s => `<div class="step-item"><div class="step-num">${s.n}</div><div class="step-body"><h4>${s.t}</h4><p>${s.b}</p></div></div>`).join('');
-  const metrics = (p.solution.metrics || []).map(m => `<div class="outcome-card"><div class="display outcome-num">${m.n}</div><p class="outcome-desc">${m.d}</p></div>`).join('');
-  const pts = (p.reflection.pts || []).map(pt => `<div class="reflection-item"><p>${pt}</p></div>`).join('');
+
+  tabList.innerHTML =
+    `<li class="proj-tab active" data-section="context" onclick="scrollToSection('context',this)">Context</li>
+     <li class="proj-tab" data-section="intent" onclick="scrollToSection('intent',this)">Intent</li>
+     <li class="proj-tab" data-section="moves" onclick="scrollToSection('moves',this)">Moves</li>
+     <li class="proj-tab" data-section="solution" onclick="scrollToSection('solution',this)">Solution</li>
+     <li class="proj-tab" data-section="reflection" onclick="scrollToSection('reflection',this)">Reflection</li>`;
+
+  const contextMeta = (p.context.meta || [])
+    .map(m => `<div class="meta-item"><label>${m.l}</label><span>${m.v}</span></div>`)
+    .join('');
+
+  const steps = (p.moves.steps || [])
+    .map(s => `<div class="step-item"><div class="step-num">${s.n}</div><div class="step-body"><h4>${s.t}</h4><p>${s.b}</p></div></div>`)
+    .join('');
+
+  const metrics = (p.solution.metrics || [])
+    .map(m => `<div class="outcome-card"><div class="display outcome-num">${m.n}</div><p class="outcome-desc">${m.d}</p></div>`)
+    .join('');
+
+  const pts = (p.reflection.pts || [])
+    .map(pt => `<div class="reflection-item"><p>${pt}</p></div>`)
+    .join('');
+
   document.getElementById('proj-content').innerHTML = `
-  <div class="proj-section" id="section-context">
-    <p class="proj-section-label">Context</p>
-    <h2 class="display proj-section-title">${p.context.sub}</h2>
-    <div class="proj-meta-grid">${contextMeta}</div>
-    <p class="proj-body">${p.context.body}</p>
-    ${buildFlexibleEvidenceGallery(p.context.evidence, g, 'Add project cover')}
-  </div>
+    <div class="proj-section" id="section-context">
+      <p class="proj-section-label">Context</p>
+      <h2 class="display proj-section-title">${p.context.sub}</h2>
+      <div class="proj-meta-grid">${contextMeta}</div>
+      ${buildFlexibleEvidenceGallery(p.context.evidence, g, 'Add project cover')}
+      <p class="proj-body">${p.context.body}</p>
+    </div>
 
-  <div class="proj-section" id="section-intent">
-    <p class="proj-section-label">Intent</p>
-    <h2 class="display proj-section-title">The Challenge</h2>
-    <p class="proj-body">${p.intent.body}</p>
-    ${p.intent.quote ? `<blockquote class="proj-quote">${p.intent.quote}</blockquote>` : ''}
-    ${buildFlexibleEvidenceGallery(p.intent.evidence, g, 'Add research evidence')}
-  </div>
+    <div class="proj-section" id="section-intent">
+      <p class="proj-section-label">Intent</p>
+      <h2 class="display proj-section-title">The Challenge</h2>
+      <p class="proj-body">${p.intent.body}</p>
+      ${p.intent.quote ? `<blockquote class="proj-quote">${p.intent.quote}</blockquote>` : ''}
+      ${buildFlexibleEvidenceGallery(p.intent.evidence, g, 'Add research evidence')}
+    </div>
 
-  <div class="proj-section" id="section-moves">
-    <p class="proj-section-label">Moves</p>
-    <h2 class="display proj-section-title">How it<br/>came to be</h2>
-    ${buildFlexibleEvidenceGallery(p.moves.evidence, g, 'Process evidence')}
-    <div class="proj-steps">${steps}</div>
-  </div>
+    <div class="proj-section" id="section-moves">
+      <p class="proj-section-label">Moves</p>
+      <h2 class="display proj-section-title">How it<br/>came to be</h2>
+      ${buildFlexibleEvidenceGallery(p.moves.evidence, g, 'Process evidence')}
+      <div class="proj-steps">${steps}</div>
+    </div>
 
-  <div class="proj-section" id="section-solution">
-    <p class="proj-section-label">Solution</p>
-    <h2 class="display proj-section-title">What<br/>emerged</h2>
-    ${metrics ? `<div class="outcome-grid">${metrics}</div>` : ''}
-    <p class="proj-body">${p.solution.body}</p>
-    ${buildFlexibleEvidenceGallery(p.solution.evidence, g2, 'Add final designs')}
-  </div>
+        <div class="proj-section" id="section-solution">
+      <p class="proj-section-label">Solution</p>
+      <h2 class="display proj-section-title">Final Design</h2>
+      ${metrics ? `<div class="outcome-grid">${metrics}</div>` : ''}
+      <p class="proj-body">${p.solution.body}</p>
+      ${buildFlexibleEvidenceGallery(p.solution.evidence, g2, 'Add final designs')}
+    </div>
 
-  <div class="proj-section" id="section-reflection">
-    <p class="proj-section-label">Reflection</p>
-    <h2 class="display proj-section-title">What I<br/>learned</h2>
-    <p class="proj-body">${p.reflection.body}</p>
-    <div class="reflection-list">${pts}</div>
-  </div>
-`;
+    <div class="proj-section" id="section-reflection">
+      <p class="proj-section-label">Reflection</p>
+      <h2 class="display proj-section-title">What I learned</h2>
+      <p class="proj-body">${p.reflection.body}</p>
+      ${buildFlexibleEvidenceGallery(p.reflection.evidence, g2)}
+      <div class="reflection-list">${pts}</div>
+      </div>
+  `;
+
   document.getElementById('proj-content').scrollTop = 0;
+
   document.querySelectorAll('.proj-tab').forEach(t => t.classList.remove('active'));
   document.querySelector('.proj-tab[data-section="context"]').classList.add('active');
+
   document.getElementById('project-overlay').classList.add('open');
+
   observeSections();
 }
+
 function closeProject() { document.getElementById('project-overlay').classList.remove('open'); }
 function scrollToSection(id, el) { document.getElementById('section-' + id)?.scrollIntoView({ behavior: 'smooth' }); document.querySelectorAll('.proj-tab').forEach(t => t.classList.remove('active')); el.classList.add('active'); }
 function observeSections() { const content = document.getElementById('proj-content'); const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { const id = e.target.id.replace('section-', ''); document.querySelectorAll('.proj-tab').forEach(t => t.classList.toggle('active', t.dataset.section === id)); } }); }, { root: content, threshold: .35 }); document.querySelectorAll('.proj-section').forEach(s => obs.observe(s)); }
