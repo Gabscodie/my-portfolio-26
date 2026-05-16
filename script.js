@@ -10,12 +10,32 @@
 /* ── FILMSTRIP DRAG ── */
 const strip = document.getElementById('filmstrip');
 const tabs = Array.from(document.querySelectorAll('.nav-tab'));
-const N = 3;
+const frames = Array.from(document.querySelectorAll('#filmstrip .frame'));
+const N = frames.length || tabs.length || 3;
+
 let currentIdx = 0, offset = 0, dragStartX = 0, dragStartY = 0, dragBaseOff = 0, dragging = false, isHoriz = false, intentLock = false;
 const VW = () => window.innerWidth;
 function applyX(x, animated) { strip.style.transition = animated ? 'transform 0.52s cubic-bezier(0.25,0.46,0.45,0.94)' : 'none'; strip.style.transform = `translateX(${x}px)`; }
 function snapTo(idx) { currentIdx = Math.max(0, Math.min(N - 1, idx)); offset = -currentIdx * VW(); applyX(offset, true); syncNav(currentIdx); document.getElementById('swipe-hint').style.display = 'none'; }
-function goToFrame(idx) { snapTo(idx); }
+function isProjectOpen() {
+  const overlay = document.getElementById('project-overlay');
+  return overlay && overlay.classList.contains('open');
+}
+
+function resetFrameScroll(idx) {
+  const frame = frames[idx];
+  if (frame) frame.scrollTop = 0;
+}
+
+function goToFrame(idx) {
+  if (isProjectOpen() && typeof closeProject === 'function') {
+    closeProject();
+  }
+
+  snapTo(idx);
+  requestAnimationFrame(() => resetFrameScroll(idx));
+}
+
 function syncNav(idx) { tabs.forEach((t, i) => t.classList.toggle('active', i === idx)); }
 function onStart(x, y) { dragStartX = x; dragStartY = y; dragBaseOff = offset; dragging = true; isHoriz = false; intentLock = false; strip.style.transition = 'none'; }
 function onMove(x, y) { if (!dragging) return; const dx = x - dragStartX, dy = y - dragStartY; if (!intentLock && (Math.abs(dx) > 4 || Math.abs(dy) > 4)) { isHoriz = Math.abs(dx) >= Math.abs(dy); intentLock = true; if (!isHoriz) { dragging = false; return; } } if (!intentLock || !isHoriz) return; const raw = dragBaseOff + dx, minOff = -(N - 1) * VW(); let clamped = raw; if (raw > 0) clamped = raw * .18; if (raw < minOff) clamped = minOff + (raw - minOff) * .18; strip.style.transform = `translateX(${clamped}px)`; }

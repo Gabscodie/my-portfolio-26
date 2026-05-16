@@ -106,7 +106,8 @@ h2,
     left: 0;
     right: 0;
     height: var(--nav-h);
-    z-index: 400;
+    z-index: 10050;
+    pointer-events: auto;
     display: flex;
     align-items: stretch;
     background: #ffffff;
@@ -1344,7 +1345,7 @@ h2,
     inset: 0;
     bottom: var(--nav-h);
     background: var(--cream);
-    z-index: 500;
+    z-index: 10000;
     display: grid;
     grid-template-columns: clamp(150px, 18vw, 220px) 1fr;
     transform: translateY(110%);
