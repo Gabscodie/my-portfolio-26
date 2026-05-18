@@ -384,8 +384,18 @@ This created the core problem: UV risk is high, but it is often invisible, hidde
         {
           type: 'image',
           format: 'landscape',
-          src: 'img_sun/overview.webp',
-          caption: 'Process and Methodologies'
+          src: 'img_sun/ref.webp',
+          caption: 'Co-design Process'
+        },
+        {
+          type: 'image',
+          format: 'portrait',
+          src: 'img_sun/o2.webp',
+        },
+        {
+          type: 'image',
+          format: 'portrait',
+          src: 'img_sun/o1.webp',
         }
       ]
     },
@@ -407,15 +417,6 @@ This created the core problem: UV risk is high, but it is often invisible, hidde
 
         If I continued the project, I would test whether the Skin Mirror feature feels motivating or too confronting. I would also refine how the app communicates UV risk without using fear or shame.
         `,
-
-      evidence: [
-        {
-          type: 'image',
-          format: 'landscape',
-          src: 'img_sun/ref.webp',
-          caption: 'Co-design Process'
-        }
-      ]
     }
   },
 
